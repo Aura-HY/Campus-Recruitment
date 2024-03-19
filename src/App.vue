@@ -2,7 +2,7 @@
   <h1>你好 我叫陈景清</h1>
   <h1>halo I am lunamoom</h1>
   <icon type="massenge" extraclass="icon"/>
-  
+  <navigationRoutesVue></navigationRoutesVue>
 
 
 
@@ -13,10 +13,12 @@
 
 <script>
 import icon from './components/icon.vue';
+import navigationRoutesVue from './components/navigationRoutes.vue';
 export default {
     
     components: {
-        icon
+        icon,
+        navigationRoutesVue
     }
 }
 </script>
