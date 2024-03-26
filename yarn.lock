@@ -202,34 +202,34 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.5.tgz#a6ce3e556e00fd9895dd872dd172ad0d4bd687f4"
   integrity sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==
 
-"@varlet/icons@3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@varlet/icons/-/icons-3.1.2.tgz#eaa7d243b1dbc10c607c3181d9febfbf775e9b7b"
-  integrity sha512-s7NLcF7Zw0e5Ba7RfTeGeZvqH2+J/C9SlBu6q5XQqlf9S3TUJKbhokITDrIQXIJcbxRHJTn1y9mUte2GO5DKJA==
+"@varlet/icons@3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@varlet/icons/-/icons-3.1.4.tgz#657f5777a0819d2ca2bd297bc0f641141e82e46a"
+  integrity sha512-l5Yf8PLc/KVUNExh72i+KeceZv0jE3OvlB4JaPwT/TPWEsSr2t8Rx7Wu/Z1hL7RjYkufijlFpzgUqhrtcwRUmg==
 
-"@varlet/shared@3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@varlet/shared/-/shared-3.1.2.tgz#4012f8276a12567e9be1f350132fda11dee2fa63"
-  integrity sha512-yYlMboUrG4dBzJcEK5rOs9knTUfYi1CIqCRehLRhegoAqVW0mcQcvAwHpXCMUxHb2MJUDjt0i5gsMoiT4+6CuA==
+"@varlet/shared@3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@varlet/shared/-/shared-3.1.4.tgz#0cd627e1a73629bcc891f6e96e485091d51723e3"
+  integrity sha512-mX1eAJCP0lTz8K/zw7CqA3DWn8PW/m72He8KDpV9mbzVt78R5l4oWC/Ryf9O5q7RzrAORkSuxFE0DS6TQqOYaw==
 
-"@varlet/ui@^3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@varlet/ui/-/ui-3.1.2.tgz#6a06e9bab78808c334ebeeb8bd46a83cfcfdb2b9"
-  integrity sha512-vVY5QOc/cGeZNQ13vguqFJgufZv6QnG1hWxFHNXQv6AjKGJUv7y84QMpdVOFz5ntiMdiAzmhUBD9Qjm0kFpdjw==
+"@varlet/ui@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@varlet/ui/-/ui-3.1.4.tgz#2a99897cb0dfc761aa9307c8ccd8103ca8f2ec7d"
+  integrity sha512-3wZkaMr3sQcwH0QA3V43DpN7or1om18lm1SL4T1cwm+eFuQLHi5hVnPcd7kCc+jTaaPzFIfirAjuBWTXmrEBSA==
   dependencies:
     "@popperjs/core" "^2.11.6"
-    "@varlet/icons" "3.1.2"
-    "@varlet/shared" "3.1.2"
-    "@varlet/use" "3.1.2"
+    "@varlet/icons" "3.1.4"
+    "@varlet/shared" "3.1.4"
+    "@varlet/use" "3.1.4"
     dayjs "^1.10.4"
     decimal.js "^10.2.1"
 
-"@varlet/use@3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@varlet/use/-/use-3.1.2.tgz#66982f350d4280bb1c88d77ba16b86205317c83b"
-  integrity sha512-ErHlD+YWKJw3iQXgsu4O77Owx7j/+IDdoHV5udmyBOq1UE4qiZ3HYba1Ie0go8NMPnh6E9CfzlEDaOdrU01h/w==
+"@varlet/use@3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@varlet/use/-/use-3.1.4.tgz#cb7f4d6baf0b004162359e1e1dec4d6a2b20b449"
+  integrity sha512-SpiB2Znop0AhlyxE/YiFS4sk4GfY1H6iS54S5x5Wje9+O71Y9p72Bjad9CVA4eMK144S3Nx46Q8cPQHyzK7F1w==
   dependencies:
-    "@varlet/shared" "3.1.2"
+    "@varlet/shared" "3.1.4"
 
 "@vitejs/plugin-vue@^5.0.4":
   version "5.0.4"
