@@ -204,17 +204,17 @@
 
 "@varlet/icons@3.1.4":
   version "3.1.4"
-  resolved "https://registry.npmmirror.com/@varlet/icons/-/icons-3.1.4.tgz"
+  resolved "https://registry.yarnpkg.com/@varlet/icons/-/icons-3.1.4.tgz#657f5777a0819d2ca2bd297bc0f641141e82e46a"
   integrity sha512-l5Yf8PLc/KVUNExh72i+KeceZv0jE3OvlB4JaPwT/TPWEsSr2t8Rx7Wu/Z1hL7RjYkufijlFpzgUqhrtcwRUmg==
 
 "@varlet/shared@3.1.4":
   version "3.1.4"
-  resolved "https://registry.npmmirror.com/@varlet/shared/-/shared-3.1.4.tgz"
+  resolved "https://registry.yarnpkg.com/@varlet/shared/-/shared-3.1.4.tgz#0cd627e1a73629bcc891f6e96e485091d51723e3"
   integrity sha512-mX1eAJCP0lTz8K/zw7CqA3DWn8PW/m72He8KDpV9mbzVt78R5l4oWC/Ryf9O5q7RzrAORkSuxFE0DS6TQqOYaw==
 
-"@varlet/ui@^3.1.2":
+"@varlet/ui@^3.1.4":
   version "3.1.4"
-  resolved "https://registry.npmmirror.com/@varlet/ui/-/ui-3.1.4.tgz"
+  resolved "https://registry.yarnpkg.com/@varlet/ui/-/ui-3.1.4.tgz#2a99897cb0dfc761aa9307c8ccd8103ca8f2ec7d"
   integrity sha512-3wZkaMr3sQcwH0QA3V43DpN7or1om18lm1SL4T1cwm+eFuQLHi5hVnPcd7kCc+jTaaPzFIfirAjuBWTXmrEBSA==
   dependencies:
     "@popperjs/core" "^2.11.6"
@@ -226,7 +226,7 @@
 
 "@varlet/use@3.1.4":
   version "3.1.4"
-  resolved "https://registry.npmmirror.com/@varlet/use/-/use-3.1.4.tgz"
+  resolved "https://registry.yarnpkg.com/@varlet/use/-/use-3.1.4.tgz#cb7f4d6baf0b004162359e1e1dec4d6a2b20b449"
   integrity sha512-SpiB2Znop0AhlyxE/YiFS4sk4GfY1H6iS54S5x5Wje9+O71Y9p72Bjad9CVA4eMK144S3Nx46Q8cPQHyzK7F1w==
   dependencies:
     "@varlet/shared" "3.1.4"

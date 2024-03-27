@@ -1,31 +1,26 @@
 <template>
-  <h1>你好 我叫陈景清</h1>
-  <h1>halo I am lunamoom</h1>
-  <icon type="massenge" extraclass="icon"/>
-  <navigationRoutesVue></navigationRoutesVue>
+    <navigationRoutesVue></navigationRoutesVue>
 
+    <navigationBarVue></navigationBarVue>
 
-
-
-
-
+    <pullDownRefresh></pullDownRefresh>
 </template>
 
 <script>
-import icon from './components/icon.vue';
 import navigationRoutesVue from './components/navigationRoutes.vue';
+import navigationBarVue from './components/navigationBar.vue';
+import pullDownRefresh from './components/pullDownRefresh.vue';
 export default {
-    
     components: {
-        icon,
-        navigationRoutesVue
-    }
-}
+        navigationRoutesVue,navigationBarVue,pullDownRefresh
+    },
+};
+
+
+
 </script>
 
 <style scoped>
-.icon{
-    font-size: 30px;
-    float: none ;
-}
+
+
 </style>
