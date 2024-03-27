@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@varlet/ui": "^3.1.2",
+    "@varlet/ui": "^3.1.4",
     "vue": "^3.4.19"
   },
   "devDependencies": {
