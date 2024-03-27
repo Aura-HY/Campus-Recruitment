@@ -4,6 +4,7 @@
     <navigationBarVue></navigationBarVue>
 
     <pullDownRefresh></pullDownRefresh>
+
 </template>
 
 <script>
