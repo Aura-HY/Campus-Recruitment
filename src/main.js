@@ -21,4 +21,7 @@ const viewportTheme = Themes.toViewport(Themes.md3Dark, {
     unitPrecision: 6,
 })
 
-const app = createApp(App).use(Varlet).mount('#app')
+//引入vue router
+import router from './router/index';
+
+createApp(App).use(Varlet).use(router).mount('#app')
