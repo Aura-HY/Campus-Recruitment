@@ -204,7 +204,9 @@
 
 "@varlet/icons@3.1.4":
   version "3.1.4"
+
   resolved "https://registry.yarnpkg.com/@varlet/icons/-/icons-3.1.4.tgz#657f5777a0819d2ca2bd297bc0f641141e82e46a"
+
   integrity sha512-l5Yf8PLc/KVUNExh72i+KeceZv0jE3OvlB4JaPwT/TPWEsSr2t8Rx7Wu/Z1hL7RjYkufijlFpzgUqhrtcwRUmg==
 
 "@varlet/shared@3.1.4":
@@ -226,7 +228,9 @@
 
 "@varlet/use@3.1.4":
   version "3.1.4"
+
   resolved "https://registry.yarnpkg.com/@varlet/use/-/use-3.1.4.tgz#cb7f4d6baf0b004162359e1e1dec4d6a2b20b449"
+
   integrity sha512-SpiB2Znop0AhlyxE/YiFS4sk4GfY1H6iS54S5x5Wje9+O71Y9p72Bjad9CVA4eMK144S3Nx46Q8cPQHyzK7F1w==
   dependencies:
     "@varlet/shared" "3.1.4"
