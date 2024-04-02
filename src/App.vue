@@ -1,8 +1,4 @@
 <template>
-    <div class="head">
-        <navigationBarVue></navigationBarVue>
-    </div>
-    
     <div class="body">
         <router-view></router-view>
     </div>
