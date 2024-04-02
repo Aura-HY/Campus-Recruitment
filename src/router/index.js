@@ -32,6 +32,14 @@ const router = createRouter({
         message: true,
       },
     },
+    {
+      path: '/jobDetail',
+      name: 'jobDetail',
+      component: () => import('../pages/jobDetail.vue'),
+      meta: {
+        message: true,
+      },
+    },
   ],
 });
 
