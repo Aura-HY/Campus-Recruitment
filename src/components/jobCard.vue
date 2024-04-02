@@ -68,6 +68,7 @@ top: 232px; */
 opacity: 1;
 background: rgba(255, 255, 255, 1);
 border: 1px solid rgba(229, 229, 229, 1);
+margin:15px;
 }
 .title{
     margin-left: 20px;
