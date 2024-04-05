@@ -1,6 +1,14 @@
 <template>
   <div class="top">
-    <jobNavigationBarVue></jobNavigationBarVue>
+    <NavigationBarVue 
+    title="职位详情" 
+    select1="收藏" 
+    select2="举报" 
+    select3="分享" 
+    @cellClick1="collect" 
+    @cellClick2="report"
+    @cellClick3="share"
+    />
   </div>
 
   <div class="jobName" style="display: -webkit-flex;display: flex;">
@@ -31,47 +39,79 @@
 
   <div class="select">
     <var-select variant="outlined" size="small" placeholder="选择简历" v-model="value13">
-      <var-option  v-for="item in items" :key="item.resumeId" :label=item.resumeName :v-model=item.resumeId />
+      <var-option  @click="sendResumeId(item.resumeId)" v-for="item in items" :key="item.resumeId" :label=item.resumeName :v-model=item.resumeId />
     </var-select>
   </div>
   
     <var-button class="button" color="linear-gradient(to right bottom, #2A82E4, #D0BCFF)"
       text-color="#fff" type="success" @click="handleClick()" >确定投递</var-button>
-  
+  <!-- //点击投递，将简历id传送至后端，应该同时也要将当前职位的id传送 -->
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { ref,onMounted } from 'vue'
 import { Snackbar } from '@varlet/ui'
-import jobNavigationBarVue from '../components/jobNavigationBar.vue';
+import NavigationBarVue from '../components/navigationBar.vue';
 
-const value13 = ref()
-
-components:{
-    jobNavigationBarVue
-}
-
-function handleClick() {
-  Snackbar.success('投递成功')
-}
-
-const data = {
-  jobDescription:'1.时间：中午十一点到一点、下午五点到七点\n2.工作内容：负责客人的出餐以及出餐台的卫生\n3.地点： ',
-  requirementsL:'1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
-  titleJob:'配送',
-  salary:'1',
-  salaryUnit:'单'
-}
-const items = [
-  {
-    resumeId:'234544',
-    resumeName:'后端简历'
+export default {
+  name: 'jobDetail',
+  data(){
+    return{
+      selectedObject:{},
+      currentResume : null,
+      items: [
+        {
+          resumeId: '234544',
+          resumeName: '后端简历'
+        },
+        {
+          resumeId: '343245',
+          resumeName: '所测试岗简历' // 最多六个字
+        }
+      ],
+      value13:ref(),
+      data:{
+        jobId: this.$route.params.jobId,
+        titleJob: this.$route.params.titleJob,
+        jobDescription: this.$route.params.jobDescription,
+        requirementsL: this.$route.params.requirementsL,
+        salary: this.$route.params.salary,
+        salaryUnit: this.$route.params.salaryUnit
+      }
+      
+    };
   },
-  {
-    resumeId:'343245',
-    resumeName:'所测试岗简历'//最多六个字
-  }
-]
+  created() {},
+  mounted() {},
+  updated() {},
+  methods: {
+        handleClick() {
+          if(this.currentResume!=null){
+            Snackbar.success('投递成功');
+          }else{
+            Snackbar.success('请选择简历');
+          }
+        },
+        //将选择的当前简历的id赋值给currentResume，方便之后的的传送
+        sendResumeId(resumeId){
+          this.currentResume=resumeId;
+        },
+        collect(){
+          console.log(this.data.jobId);
+        },
+        report(){
+          console.log(this.data.jobId);
+        },
+        share(){
+          console.log(this.data.jobId);
+        }
+    },
+    components:{
+      NavigationBarVue
+    },
+
+}
+
 </script>
 
 <style scoped>
