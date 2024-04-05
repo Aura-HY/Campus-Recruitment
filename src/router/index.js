@@ -33,12 +33,12 @@ const router = createRouter({
       },
     },
     {
-      path: '/jobDetail',
+      path: '/jobDetail/:jobId/:titleJob/:jobDescription/:requirementsL/:salary/:salary/:salaryUnit',
       name: 'jobDetail',
       component: () => import('../pages/jobDetail.vue'),
-      meta: {
-        message: true,
-      },
+      // meta: {
+      //   message: true,
+      // },
     },
   ],
 });

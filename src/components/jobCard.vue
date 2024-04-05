@@ -1,15 +1,16 @@
 <template>
-<div class="card" @click="goJobDetail()"  v-for="item in items" :key="item.id" style="margin-top:20px;">
+<!-- //这里可以通过点击卡片传卡片的jobId,传对应的值到detail路由中 -->
+<div class="card" @click="goJobDetail(item.jobId,item.titleJob,item.jobDescription,item.requirementsL,item.salary,item.salaryUnit)"  v-for="item in items" :key="item.jobId" style="margin-top:20px;">
     <div class="top" style="display: -webkit-flex;display: flex;">
-        <div class="title" >{{ item.title_job }}</div>
-        <div class="salary" >{{ item.salary }} / {{ item.salary_unit }}</div>
+        <div class="title" >{{ item.titleJob }}</div>
+        <div class="salary" >{{ item.salary }} / {{ item.salaryUnit }}</div>
     </div>
    
-    <div class="subtitle">{{ item.requirement_label }} </div>
+    <div class="subtitle">{{ item.requirementLabel }} </div>
     
     <div class="bottom" style="display: -webkit-flex;display: flex;">
-        <div class="avatar" ><img :src=item.user_avatar ></div>
-        <div class="recruiters" style="margin-left:10px;">{{ item.user_name }}</div>
+        <div class="avatar" ><img :src=item.userAvatar ></div>
+        <div class="recruiters" style="margin-left:10px;">{{ item.userName }}</div>
         <div class="location" style="position:absolute;right:30px;">{{ item.location }}</div>
     </div>
     
@@ -22,39 +23,57 @@ import {useRouter} from 'vue-router'
 
 const router = useRouter()
 
-function goJobDetail(){
-    router.push({name:'jobDetail'});
+const props=defineProps(['items'])
+
+function goJobDetail(jobId,titleJob,jobDescription,requirementsL,salary,salaryUnit){
+    router.push({
+        name:'jobDetail',
+        params:{ 
+            jobId:jobId ,
+            titleJob:titleJob,
+            jobDescription:jobDescription,
+            requirementsL:requirementsL,
+            salary:salary,
+            salaryUnit:salaryUnit
+        }
+    });
 }
 
 const items = [
     {
-        id:1,
-        title_job:'配送',
-        user_avatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        user_name:'鸡腿饭老板',
-        requirement_label:'label3,label2',
+        jobId:1,
+        titleJob:'配送',
+        userAvatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
+        userName:'鸡腿饭老板',
+        requirementLabel:'label3,label2',
+        jobDescription:'1.时间：中午十一点到一点、下午五点到七点 2.工作内容：保障客人肚子的安全 3.地点：需要填饱肚子的地方 ',
+        requirementsL:'1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
         salary:'1',
-        salary_unit:'单',
+        salaryUnit:'单',
         location:'一饭'
     },
     {
-        id:2,
-        title_job:'打饭',
-        user_avatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        user_name:'鸡腿饭老板',
-        requirement_label:'label1,label1',
+        jobId:2,
+        titleJob:'打饭',
+        userAvatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
+        userName:'鸡腿饭老板',
+        requirementLabel:'label1,label1',
+        jobDescription:'1.时间：中午十一点到一点、下午五点到七点 2.工作内容：负责客人的出餐以及出餐台的卫生 3.地点： ',
+        requirementsL:'1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
         salary:'15',
-        salary_unit:'h',
+        salaryUnit:'h',
         location:'二饭'
     },
     {
-        id:3,
-        title_job:'修网线',
-        user_avatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        user_name:'广东医网办处',
-        requirement_label:'label2,label1ghiu',
+        jobId:3,
+        titleJob:'修网线',
+        userAvatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
+        userName:'广东医网办处',
+        requirementLabel:'label2,label1ghiu',
+        jobDescription:'1.时间：早上8点到11点、下午五点到七点 2.工作内容：校园网的修理 3.地点：出故障的地方 ',
+        requirementsL:'1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
         salary:'6000',
-        salary_unit:'月',
+        salaryUnit:'月',
         location:'A22433'
     }
 ]
