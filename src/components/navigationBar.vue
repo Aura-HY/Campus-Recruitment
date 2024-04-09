@@ -1,6 +1,6 @@
 <!--封装顶部导航栏-->
 <template fixed="true">
-    <var-app-bar title="标题" fixed="true">
+    <var-app-bar title="标题">
         <template #left>
             <var-button color="transparent" text-color="#fff" round text>
                 <var-icon name="chevron-left" :size="24" />

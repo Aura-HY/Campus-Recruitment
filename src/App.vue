@@ -40,12 +40,12 @@ export default {
 <style scoped>
 .head{
     width: 100vw;
-    height: 6.9vh;
+    height: 7vh;
 }
 
 .body{
     width: 100vw;
-    height: 86vh;
+    height: 93vh;
 }
 
 .foot{

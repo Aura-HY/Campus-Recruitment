@@ -1,11 +1,15 @@
 <template>
-  <h1 class="hh1">1111</h1>
+
 </template>
 
 <script>
-export default {
-
+import practice2 from "../components/practice2.vue"
+export default{
+  components: {
+  practice2
+  }
 }
+
 </script>
 
 <style scoped>

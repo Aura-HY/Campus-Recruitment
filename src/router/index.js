@@ -40,6 +40,30 @@ const router = createRouter({
         message: true,
       },
     },
+    {
+      path: '/selectResume',
+      name: 'selectResume',
+      component: () => import('../pages/selectResume.vue'),
+      meta: {
+        message: true,
+      },
+    },
+    {
+      path: '/fraudPreventionGuide',
+      name: 'fraudPreventionGuide',
+      component: () => import('../pages/fraudPreventionGuide.vue'),
+      meta: {
+        message: true,
+      },
+    },
+    {
+      path: '/createNewResume',
+      name: 'createNewResume',
+      component: () => import('../pages/createNewResume.vue'),
+      meta: {
+        message: true,
+      },
+    },
   ],
 });
 
