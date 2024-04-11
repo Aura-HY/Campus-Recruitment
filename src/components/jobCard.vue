@@ -18,65 +18,55 @@
   
 </template>
 
-<script setup>
+<script>
 import {useRouter} from 'vue-router'
+import user from '../api/user';
+// const router = useRouter()
 
-const router = useRouter()
-
-const props=defineProps(['items'])
-
-function goJobDetail(jobId,titleJob,jobDescription,requirementsL,salary,salaryUnit){
-    router.push({
-        name:'jobDetail',
-        params:{ 
-            jobId:jobId ,
-            titleJob:titleJob,
-            jobDescription:jobDescription,
-            requirementsL:requirementsL,
-            salary:salary,
-            salaryUnit:salaryUnit
+export default {
+    props: ['items'],
+    data() {
+        return {
+            //items是个数组
+            items: []
+            //     {
+            //     jobId: '',
+            //     titleJob: '',
+            //     jobDescription: '',
+            //     userAvatar: '',
+            //     userName: '',
+            //     requirementLabel: '',
+            //     requirementsL: '',
+            //     salary: '',
+            //     salaryUnit: '',
+            //     location: ''
+            // }
+        };
+    },
+    methods: {
+        goJobDetail(jobId, titleJob, jobDescription, requirementsL, salary, salaryUnit) {
+            this.$router.push({
+                name: 'jobDetail',
+                params: {
+                    jobId: jobId,
+                    titleJob: titleJob,
+                    jobDescription: jobDescription,
+                    requirementsL: requirementsL,
+                    salary: salary,
+                    salaryUnit: salaryUnit
+                }
+            });
+        },
+        
+        async queryjob() {
+            const items = await user.getJobList();
+            this.items = items;
         }
-    });
-}
-
-const items = [
-    {
-        jobId:1,
-        titleJob:'配送',
-        userAvatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        userName:'鸡腿饭老板',
-        requirementLabel:'label3,label2',
-        jobDescription:'1.时间：中午十一点到一点、下午五点到七点 2.工作内容：保障客人肚子的安全 3.地点：需要填饱肚子的地方 ',
-        requirementsL:'1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
-        salary:'1',
-        salaryUnit:'单',
-        location:'一饭'
     },
-    {
-        jobId:2,
-        titleJob:'打饭',
-        userAvatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        userName:'鸡腿饭老板',
-        requirementLabel:'label1,label1',
-        jobDescription:'1.时间：中午十一点到一点、下午五点到七点 2.工作内容：负责客人的出餐以及出餐台的卫生 3.地点： ',
-        requirementsL:'1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
-        salary:'15',
-        salaryUnit:'h',
-        location:'二饭'
-    },
-    {
-        jobId:3,
-        titleJob:'修网线',
-        userAvatar:'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        userName:'广东医网办处',
-        requirementLabel:'label2,label1ghiu',
-        jobDescription:'1.时间：早上8点到11点、下午五点到七点 2.工作内容：校园网的修理 3.地点：出故障的地方 ',
-        requirementsL:'1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
-        salary:'6000',
-        salaryUnit:'月',
-        location:'A22433'
+    created() {
+            this.queryjob();
     }
-]
+};
 </script>
 
 <style scoped>
