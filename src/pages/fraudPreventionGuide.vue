@@ -1,0 +1,61 @@
+<template>
+    <div class="top">
+        <fpGuideBar></fpGuideBar>
+    </div>
+    <!-- 防诈骗文本框 -->
+    <div class="main">
+        <div class="text">
+            <p class="text1">防诈小指南</p>
+            <p>1.不要轻易透露个人敏感信息，如身份证号码、银行账户信息等。</p>
+            <p>2.警惕任何要求你提前支付费用的兼职机会，这可能是诈骗。</p>
+            <p>3.确保了解清楚薪酬结构，避免虚假承诺或不合理的付款要求</p>
+            <p>4.避免在不知名或不可靠的网站上发布个人信息或寻找工作。</p>
+            <p>5.告知家人或朋友你的兼职计划，让他们知道你的位置和工作安排。</p>
+        </div>
+
+        <!-- 骚话框 -->
+        <div class="sh">
+
+        </div>
+
+        <!-- 广告 今麦郎打钱！！！ -->
+        <div class="ad">
+            <var-image width="390.4px" height="200px" fit="cover" src="../assets/3.jpg" />
+        </div>
+    </div>
+</template>
+
+<script>
+import fpGuideBar from '../components/fpGuideBar.vue';
+export default{
+    components:{
+        fpGuideBar
+    }
+}
+
+</script>
+
+<style>
+.top{
+    margin-bottom: 20px;
+    margin-top:80px;
+}
+.text1{
+    font-weight: bold;
+}
+/* 设置防诈小指南盒子 */
+.text{
+    border: 1px solid #000;
+    margin-bottom: 20px; /* 设置防诈小指南与骚话之间的间距 */
+}
+/* 设置骚话盒子 */
+.sh{
+    margin-bottom: 20px; /* 设置骚话盒子与广告盒子之间的间距 */
+    height: 150px;
+}
+
+/* 设置广告盒子 */
+.ad{
+    height: 200px;
+}
+</style>

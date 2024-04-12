@@ -6,15 +6,18 @@
     </div>
 </template>
 
-<script setup>
+<script>
 import Select from "../components/select.vue"
 import jobCard from "../components/jobCard.vue"
 import navigationRoutesVue from "../components/navigationRoutes.vue"
-components: {
+export default{
+    components: {
     Select,
     jobCard,
     navigationRoutesVue
 }
+}
+
 
 
 </script>
