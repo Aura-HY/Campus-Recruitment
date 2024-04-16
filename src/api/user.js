@@ -11,6 +11,14 @@ const user = {
     //首页渲染
     getJobList(){
         return request(`${moduleUrl}/home/getJobList`);
+    },
+    //获取可选的职位类型
+    getTypeList(){
+        return request(`${moduleUrl}/home/getTypeList`);
+    },
+    //获取选择类型后的
+    getTypeJob(typeId){
+        return request(`${moduleUrl}/home/getTypeJob`,typeId);
     }
 };
 

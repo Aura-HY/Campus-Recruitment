@@ -10,7 +10,7 @@
     
     <div class="bottom" style="display: -webkit-flex;display: flex;">
         <div class="avatar" ><img :src=item.userAvatar ></div>
-        <div class="recruiters" style="margin-left:10px;">{{ item.userName }}</div>
+        <div class="recruiters" style="margin-left:10px;">{{ item.nickname }}</div>
         <div class="location" style="position:absolute;right:30px;">{{ item.location }}</div>
     </div>
     
@@ -29,18 +29,6 @@ export default {
         return {
             //items是个数组
             items: []
-            //     {
-            //     jobId: '',
-            //     titleJob: '',
-            //     jobDescription: '',
-            //     userAvatar: '',
-            //     userName: '',
-            //     requirementLabel: '',
-            //     requirementsL: '',
-            //     salary: '',
-            //     salaryUnit: '',
-            //     location: ''
-            // }
         };
     },
     methods: {
@@ -58,14 +46,22 @@ export default {
             });
         },
         
-        async queryjob() {
+        async queryJob() {
             const items = await user.getJobList();
             this.items = items;
-        }
+        },
+
+        // async typeJob(data){
+        //     const items = await user.getTypeJob(data);
+        //     this.items=items;
+        // }
     },
     created() {
-            this.queryjob();
-    }
+            this.queryJob();
+    },
+    // mounted(){
+    //     this.$on('send-id',this.typeJob)
+    // }
 };
 </script>
 

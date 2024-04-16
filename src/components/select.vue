@@ -1,21 +1,40 @@
 <template>
   <div class="select">
-    <var-select placeholder="筛选兼职类型" chip multiple v-model="value10" style="margin:20px">
-            <var-option  v-for="item in items" :key="item.id" :label=item.type />
+    <var-select placeholder="筛选兼职类型" validate-trigger="" chip  multiple v-model="value10" style="margin:20px">
+            <var-option 
+              v-for="item in items" 
+              :key="item.paramId"
+              :label=item.paramMeaning 
+              @click="sendId(item.paramId)"
+              />
     </var-select>
 </div>
 </template>
 
-<script setup>
+<script name="select">
 import { ref } from 'vue'
+import user from '../api/user'
 
-const value10 = ref([])
-const items = [
-    {id:1,type:'type 1'},
-    {id:2,type:'type 2'},
-    {id:3,type:'type 3'}
-]
-
+export default{
+  data(){
+    return{
+      items:[],
+      value10 : ref([])
+    }
+  },
+  methods:{
+    async queryType() {
+            const items = await user.getTypeList();
+            this.items = items;
+    },
+    sendId(paramId){
+      this.$emit('send-id',paramId);
+    }
+  },
+  created(){
+    this.queryType()
+  }
+}
 </script>
 
 <style>
