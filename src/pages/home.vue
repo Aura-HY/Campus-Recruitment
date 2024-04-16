@@ -1,5 +1,5 @@
 <template>
-    <Select></Select>
+    <Select ></Select>
     <jobCard></jobCard>
     <div class="bottom">
         <navigationRoutesVue></navigationRoutesVue>
