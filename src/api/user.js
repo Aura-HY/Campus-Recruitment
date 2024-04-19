@@ -1,5 +1,6 @@
 import request from '../utils/request';
-
+//request2是没有返回值的，可以用于添加等可以不要返回值的，但目前有报错，但能成
+import request2 from '../utils/request2';
 const moduleUrl = '/user';
 
 const user = {
@@ -19,7 +20,15 @@ const user = {
     //获取选择类型后的
     getTypeJob(typeId){
         return request(`${moduleUrl}/home/getTypeJob`,typeId);
-    }
+    },
+    //添加收藏的职位到收藏表
+    addCollect(userId,jobId){
+        request2(`${moduleUrl}/addCollect`,{ userId , jobId });
+    },
+    //添加举报的职位到举报表
+    addReport(userId,jobId){
+        request2(`${moduleUrl}/addReport`,{ userId , jobId });
+    },
 };
 
 export default user;

@@ -1,20 +1,26 @@
 <template>
-    <Select ></Select>
-    <jobCard></jobCard>
-    <div class="bottom">
-        <navigationRoutesVue></navigationRoutesVue>
-    </div>
+    <Select @send-id="typeId1"></Select>
+    <jobCard :paramId="typeId"></jobCard>
 </template>
 
 <script>
 import Select from "../components/select.vue"
 import jobCard from "../components/jobCard.vue"
-import navigationRoutesVue from "../components/navigationRoutes.vue"
 export default{
+    name:"home",
+    data(){
+        return{
+            typeId:''
+        }
+    },
+    methods:{
+        typeId1(paramId){
+            this.typeId = paramId;
+        }
+    },
     components: {
     Select,
     jobCard,
-    navigationRoutesVue
 }
 }
 

@@ -5,7 +5,7 @@
         <div class="title" >{{ item.titleJob }}</div>
         <div class="salary" >{{ item.salary }} / {{ item.salaryUnit }}</div>
     </div>
-   
+
     <div class="subtitle">{{ item.requirementLabel }} </div>
     
     <div class="bottom" style="display: -webkit-flex;display: flex;">
@@ -15,7 +15,7 @@
     </div>
     
 </div>
-  
+
 </template>
 
 <script>
@@ -28,8 +28,14 @@ export default {
     data() {
         return {
             //items是个数组
-            items: []
+            items: [],    
         };
+    },
+    props:{
+        paramId:{
+            type:String,
+            default:''
+        }
     },
     methods: {
         goJobDetail(jobId, titleJob, jobDescription, requirementsL, salary, salaryUnit) {
@@ -45,31 +51,34 @@ export default {
                 }
             });
         },
-        
+        //拿到全部职业列表
         async queryJob() {
             const items = await user.getJobList();
             this.items = items;
         },
 
-        // async typeJob(data){
-        //     const items = await user.getTypeJob(data);
-        //     this.items=items;
-        // }
+        async typeJob(paramId){
+            const items = await user.getTypeJob({paramId:paramId});
+            this.items=items;
+        }
     },
     created() {
             this.queryJob();
     },
-    // mounted(){
-    //     this.$on('send-id',this.typeJob)
-    // }
+    watch:{
+        paramId(newVal,oldVal){
+            if(newVal=='5'){
+                this.queryJob();
+            }else if (oldVal !== undefined) {   
+                this.typeJob(newVal);  
+            }
+        }
+    }
 };
 </script>
 
 <style scoped>
 .card{
-/* left: 14px;
-top: 232px; */
-/* height: 100px; */
 opacity: 1;
 background: rgba(255, 255, 255, 1);
 border: 1px solid rgba(229, 229, 229, 1);
