@@ -23,6 +23,7 @@ export default{
     }
   },
   methods:{
+    
     async queryType() {
             const items = await user.getTypeList();
             this.items = items;
