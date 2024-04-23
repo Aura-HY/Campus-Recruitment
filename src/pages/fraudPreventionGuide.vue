@@ -15,7 +15,7 @@
 
         <!-- 骚话框 -->
         <div class="sh">
-
+            请帮蔡老师找一个女朋友
         </div>
 
         <!-- 广告 今麦郎打钱！！！ -->
@@ -40,9 +40,11 @@ export default{
     margin-bottom: 20px;
     margin-top:80px;
 }
+
 .text1{
     font-weight: bold;
 }
+
 /* 设置防诈小指南盒子 */
 .text{
     border: 1px solid #000;

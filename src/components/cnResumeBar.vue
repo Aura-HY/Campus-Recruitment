@@ -7,19 +7,24 @@
         </template>
 
         <template #right>
-                <var-button color="transparent" text-color="#fff" round text>
-                    <var-icon name="plus-circle" :size="30" />
-                </var-button>
+            <var-button color="transparent" text-color="#fff" round text @click="handleClick()">
+                保存
+            </var-button>
         </template>
     </var-app-bar>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
+import { Snackbar } from '@varlet/ui'
 
 const router = useRouter();
 
 function goSelectResume() {
     router.push({ name: 'selectResume' });
+}
+
+function handleClick() {
+    Snackbar.success('保存成功');
 }
 </script>
