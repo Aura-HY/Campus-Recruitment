@@ -16,6 +16,10 @@
         </div>
     </div>
 
+    <var-card  
+        
+    />
+
     <!-- 跳转栏 -->
     <div class="jumpBar">
         <div class="stat-item">
@@ -30,7 +34,7 @@
             <p class="stat-number">23</p>
             <p class="stat-text">待面试</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item" @click="goFavoritesCollections">
             <p class="stat-number">11</p>
             <p class="stat-text">收藏</p>
         </div>
@@ -43,14 +47,14 @@
 
     <!-- 功能栏 -->
     <div class="controlBar">
-            <div class="smallControlBar" @click="goSelectResume">
-                <img src="" alt="Icon 1" @click="goSelectResume" />
-                <p class="text">我的简历</p>
-            </div>
-            <div class="smallControlBar" @click="goFraudPreventionGuide">
-                <img src="" alt="Icon 2" @click="goFraudPreventionGuide" />
-                <p class="text">防诈指南</p>
-            </div>
+        <div class="smallControlBar" @click="goSelectResume">
+            <img src="" alt="Icon 1" @click="goSelectResume" />
+            <p class="text">我的简历</p>
+        </div>
+        <div class="smallControlBar" @click="goFraudPreventionGuide">
+            <img src="" alt="Icon 2" @click="goFraudPreventionGuide" />
+            <p class="text">防诈指南</p>
+        </div>
     </div>
 </template>
 
@@ -79,6 +83,9 @@ export default {
         },
         goFraudPreventionGuide() {
             this.$router.push('/fraudPreventionGuide');
+        },
+        goFavoritesCollections() {
+            this.$router.push('/favoritesCollections');
         }
     }
 };
@@ -87,11 +94,19 @@ export default {
 <style>
 /* 设置用户信息盒子 */
 .headImage {
-    border: 1px solid #000;
+    /* border: 1px solid  #2E4E7E;  藏青色边框 */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 添加阴影 */
+    /*border: 1px solid #000;*/
     display: flex;
     align-items: center;
     margin-bottom: 20px; /* 设置用户信息盒子与统计信息盒子之间的间距 */
+
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin: 15px;
 }
+
 
 /* 设置头像与信息之间的间距 */
 .avatar {
@@ -113,13 +128,21 @@ export default {
 .subtext {
     color: gray;
     font-size: 12px;
+    margin-top: 10px; /* 调整间距为 10px */
 }
 
 /* 设置统计信息盒子 */
 .jumpBar {
-    border: 1px solid #000;
+    /* border: 1px solid  #2E4E7E; 藏青色边框 */
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 添加阴影 */
+    /* border: 1px solid #000; */
     display: flex;
     margin-bottom: 20px; /* 设置统计信息盒子与广告盒子之间的间距 */
+
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin: 15px;
 }
 
 /* 设置跳转小盒子的布局样式 */
@@ -142,27 +165,35 @@ export default {
 }
 
 /* 设置广告盒子 */
-.ad{
+.ad {
     margin-bottom: 20px; /* 设置统计信息盒子与广告盒子之间的间距 */
     height: 300px;
+
 }
 
 /* 设置功能栏布局样式 */
 .controlBar {
-display: flex;
-height: 150px;
+    /* border: 1px solid #2E4E7E;  藏青色边框 */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 添加阴影 */
+    display: flex;
+    height: 150px;
+
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin: 15px;
 }
 
 /* 设置功能栏小盒子样式 */
 .smallControlBar {
-margin: 25px;
-display: flex;
-flex-direction: column;
-align-items: center;
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* 设置文本样式 */
 .text {
-color: gray;
+    color: gray;
 }
 </style>
