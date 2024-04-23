@@ -65,13 +65,13 @@ const router = createRouter({
       },
     },
     {
-      path: '/favoritesCollections',
-      name: 'favoritesCollections',
-      component: () => import('../pages/favoritesCollections.vue'),
+      path: '/Login',
+      name: 'Login',
+      component: () => import('../pages/Login.vue'),
       meta: {
         message: true,
       },
-    },
+    }
   ],
 });
 

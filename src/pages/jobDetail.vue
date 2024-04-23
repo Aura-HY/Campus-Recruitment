@@ -52,6 +52,7 @@
 import { ref,onMounted } from 'vue'
 import { Snackbar } from '@varlet/ui'
 import NavigationBarVue from '../components/navigationBar.vue';
+import user from '../api/user'
 
 export default {
   name: 'jobDetail',
@@ -77,8 +78,11 @@ export default {
         requirementsL: this.$route.params.requirementsL,
         salary: this.$route.params.salary,
         salaryUnit: this.$route.params.salaryUnit
+      },
+      job:{
+        userId:'3',
+        jobId:this.$route.params.jobId,
       }
-      
     };
   },
   created() {},
@@ -96,11 +100,16 @@ export default {
         sendResumeId(resumeId){
           this.currentResume=resumeId;
         },
-        collect(){
-          console.log(this.data.jobId);
+        
+        //添加收藏
+        async collect(){
+          Snackbar.success('收藏成功');
+          user.addCollect(this.job.userId,this.job.jobId);
         },
+
         report(){
-          console.log(this.data.jobId);
+          Snackbar.success('举报成功');
+          user.addReport(this.job.userId,this.job.jobId);
         },
         share(){
           console.log(this.data.jobId);

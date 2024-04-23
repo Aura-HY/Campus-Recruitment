@@ -14,78 +14,82 @@
             <div class="location" style="position: absolute; right: 30px">{{ item.location }}</div>
         </div>
     </div>
+
+    <div class="subtitle">{{ item.requirementLabel }} </div>
+    
+    <div class="bottom" style="display: -webkit-flex;display: flex;">
+        <div class="avatar" ><img :src=item.userAvatar ></div>
+        <div class="recruiters" style="margin-left:10px;">{{ item.nickname }}</div>
+        <div class="location" style="position:absolute;right:30px;">{{ item.location }}</div>
+    </div>
+
 </template>
 
-<script setup>
-import { useRouter } from 'vue-router';
+<script>
+import {useRouter} from 'vue-router'
+import user from '../api/user';
+// const router = useRouter()
 
-const router = useRouter();
-
-const props = defineProps(['items']);
-
-function goJobDetail(jobId, titleJob, jobDescription, requirementsL, salary, salaryUnit) {
-    router.push({
-        name: 'jobDetail',
-        params: {
-            jobId: jobId,
-            titleJob: titleJob,
-            jobDescription: jobDescription,
-            requirementsL: requirementsL,
-            salary: salary,
-            salaryUnit: salaryUnit
+export default {
+    props: ['items'],
+    data() {
+        return {
+            //items是个数组
+            items: [],    
+        };
+    },
+    props:{
+        paramId:{
+            type:String,
+            default:''
         }
-    });
-}
+    },
+    methods: {
+        goJobDetail(jobId, titleJob, jobDescription, requirementsL, salary, salaryUnit) {
+            this.$router.push({
+                name: 'jobDetail',
+                params: {
+                    jobId: jobId,
+                    titleJob: titleJob,
+                    jobDescription: jobDescription,
+                    requirementsL: requirementsL,
+                    salary: salary,
+                    salaryUnit: salaryUnit
+                }
+            });
+        },
+        //拿到全部职业列表
+        async queryJob() {
+            const items = await user.getJobList();
+            this.items = items;
+        },
 
-const items = [
-    {
-        jobId: 1,
-        titleJob: '配送',
-        userAvatar: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        userName: '鸡腿饭老板',
-        requirementLabel: 'label3,label2',
-        jobDescription: '1.时间：中午十一点到一点、下午五点到七点 2.工作内容：保障客人肚子的安全 3.地点：需要填饱肚子的地方 ',
-        requirementsL: '1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
-        salary: '1',
-        salaryUnit: '单',
-        location: '一饭'
+        async typeJob(paramId){
+            const items = await user.getTypeJob({paramId:paramId});
+            this.items=items;
+        }
     },
-    {
-        jobId: 2,
-        titleJob: '打饭',
-        userAvatar: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        userName: '鸡腿饭老板',
-        requirementLabel: 'label1,label1',
-        jobDescription: '1.时间：中午十一点到一点、下午五点到七点 2.工作内容：负责客人的出餐以及出餐台的卫生 3.地点： ',
-        requirementsL: '1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
-        salary: '15',
-        salaryUnit: 'h',
-        location: '二饭'
+    created() {
+            this.queryJob();
     },
-    {
-        jobId: 3,
-        titleJob: '修网线',
-        userAvatar: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.N3QbpwZJUYZAn_6JRbWgXAAAAA?w=166&h=176&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        userName: '广东医网办处',
-        requirementLabel: 'label2,label1ghiu',
-        jobDescription: '1.时间：早上8点到11点、下午五点到七点 2.工作内容：校园网的修理 3.地点：出故障的地方 ',
-        requirementsL: '1.善于沟通学习2.有相关经验3.为人老实4.做事认真',
-        salary: '6000',
-        salaryUnit: '月',
-        location: 'A22433'
+    watch:{
+        paramId(newVal,oldVal){
+            if(newVal=='5'){
+                this.queryJob();
+            }else if (oldVal !== undefined) {   
+                this.typeJob(newVal);  
+            }
+        }
     }
-];
+};
 </script>
 
 <style scoped>
-.card {
-    /* left: 14px;
-top: 232px; */
-    /* height: 100px; */
-    opacity: 1;
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(229, 229, 229, 1);
-    margin: 15px;
+.card{
+opacity: 1;
+background: rgba(255, 255, 255, 1);
+border: 1px solid rgba(229, 229, 229, 1);
+margin:15px;
 }
 .title {
     margin-left: 20px;

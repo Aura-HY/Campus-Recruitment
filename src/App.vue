@@ -17,6 +17,11 @@
 import navigationBarVue from './components/navigationBar.vue';
 import { useRouter } from 'vue-router';
 export default {
+    data() {
+    return {
+      active: ('home') // 在data()方法中使用Vue.ref()创建响应式数据
+    };
+    },
     components: {
         navigationBarVue
     },
