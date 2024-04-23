@@ -2,24 +2,23 @@
     <div class="top">
         <sResumeBar></sResumeBar>
     </div>
-
+    <!-- 大简历卡片 -->
     <div class="resumeCards">
+        <!-- 小简历卡片 -->
         <div v-for="resume in resumes" :key="resume.id" class="resumeCard">
-            <!-- 左边的 src 盒子，显示简历图标 -->
+            <!-- 左边的简历图标盒子 -->
             <div class="src-box">
                 <var-icon name="file-document-outline" :size="80" />
             </div>
 
-            <!-- 中间的 text 盒子，显示后端数据库数据 -->
+            <!-- 中间的简历内容盒子 -->
             <div class="text-box">
-                <p>{{ resume.content }}</p>
+                <p style="font-size: 16px; margin: 0">{{ resume.content }}</p>
             </div>
 
             <!-- 右侧的箭头盒子 -->
-            <div class="arrow-box">
-                <var-button color="transparent" text-color="#fff" round text @click="goResume(resume.id)">
-                    <var-icon name="chevron-right" :size="30" />
-                </var-button>
+            <div class="arrow-box" @click="goResume(resume.id)">
+                <var-icon name="chevron-right" :size="35" style="margin-left: 10px" />
             </div>
         </div>
     </div>
@@ -62,8 +61,13 @@ export default {
 .resumeCard {
     display: flex;
     align-items: center;
-    border: 1px solid #000;
+    /*border: 1px solid #000;  调试边框 */
     margin-bottom: 10px; /* 添加间隔 */
+
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin: 15px;
 }
 
 .src-box {
@@ -77,5 +81,6 @@ export default {
 
 .arrow-box {
     color: black;
+    cursor: pointer; /* 添加指针样式 */
 }
 </style>

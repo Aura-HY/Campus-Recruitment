@@ -3,12 +3,6 @@
 </template>
 
 <script>
-import practice2 from "../components/practice2.vue"
-export default{
-  components: {
-  practice2
-  }
-}
 
 </script>
 
