@@ -1,6 +1,4 @@
 import request from '../utils/request';
-//request2是没有返回值的，可以用于添加等可以不要返回值的，但目前有报错，但能成
-import request2 from '../utils/request2';
 const moduleUrl = '/user';
 
 const user = {
@@ -23,12 +21,27 @@ const user = {
     },
     //添加收藏的职位到收藏表
     addCollect(userId,jobId){
-        request2(`${moduleUrl}/addCollect`,{ userId , jobId });
+        return request(`${moduleUrl}/addCollect`,{ userId , jobId });
     },
     //添加举报的职位到举报表
     addReport(userId,jobId){
-        request2(`${moduleUrl}/addReport`,{ userId , jobId });
+        return request(`${moduleUrl}/addReport`,{ userId , jobId });
     },
+    //用户注册
+    addUser(userId,password,phoneNumber,nickname,identityParam){
+        return request(`${moduleUrl}/addUser`,{ userId, password, phoneNumber, nickname, identityParam })
+    },
+    //获取用户密码
+    getUserPassword(userId){
+        return request(`${moduleUrl}/getUserPassword`,{ userId });
+    },
+    //获得当前登录用户的简历列表
+    getResume(userId){
+        return request(`${moduleUrl}/getResume`,{ userId });
+    },
+    addSendResume(resumeId){
+        return request(`${moduleUrl}/addSendResume`,{ resumeId });
+    }
 };
 
 export default user;
