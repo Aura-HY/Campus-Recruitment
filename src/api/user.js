@@ -39,8 +39,8 @@ const user = {
     getResume(userId){
         return request(`${moduleUrl}/getResume`,{ userId });
     },
-    addSendResume(resumeId){
-        return request(`${moduleUrl}/addSendResume`,{ resumeId });
+    addSendResume(resumeId, userId, recruitersId){
+        return request(`${moduleUrl}/addSendResume`,{ resumeId, userId, recruitersId });
     }
 };
 
