@@ -83,7 +83,7 @@ export default {
 }
 </script>
 
-<style name="Register">
+<style name="Register" scoped>
 
 .id{
     margin-top: 10%;

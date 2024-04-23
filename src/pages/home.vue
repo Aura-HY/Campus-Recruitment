@@ -1,6 +1,14 @@
 <template>
-    <Select @send-id="typeId1"></Select>
-    <jobCard :paramId="typeId"></jobCard>
+    <div class="head">
+        <div class="headson">
+            <Select @send-id="typeId1"></Select>
+        </div>
+        
+    </div>
+    <div class="body">
+        <jobCard :paramId="typeId"></jobCard>
+    </div>
+    
 </template>
 
 <script>
@@ -28,6 +36,21 @@ export default{
 
 </script>
 
-<style>
+<style scoped>
+.head{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headson{
+    height: 100%;
+    width: 90%;
 
+}
+.body{
+    height: 90%;
+    overflow: auto;
+}
 </style>

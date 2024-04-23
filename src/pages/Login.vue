@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style name="login">
+<style name="login" scoped>
 
 .id{
     margin-top: 10%;

@@ -58,13 +58,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .top {
-    margin-bottom: 20px;
-    margin-top: 76px;
+    height: 10%;
+    width: 100%;
 }
 
-/* 设置大简历卡片 */
+.resumeCards{
+    overflow-y: auto;
+    height: 90%;
+}
+/* 设置小简历卡片 */
 .resumeCard {
     display: flex;
     flex-direction: column;
