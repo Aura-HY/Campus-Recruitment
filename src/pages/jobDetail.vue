@@ -85,7 +85,7 @@ export default {
         async handleClick() {
           if(this.currentResume!=null){
             Snackbar.success('投递成功');
-            user.addSendResume(this.currentResume);
+            user.addSendResume(this.currentResume,this.job.userId,);
           }else{
             Snackbar.success('请选择简历');
           }

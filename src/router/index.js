@@ -79,7 +79,15 @@ const router = createRouter({
       meta: {
         message: true,
       },
-    }
+    },
+    {
+      path: '/favoritesCollections',
+      name: 'favoritesCollections',
+      component: () => import('../pages/favoritesCollections.vue'),
+      meta: {
+        message: true,
+      },
+    },
   ],
 });
 

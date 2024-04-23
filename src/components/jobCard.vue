@@ -14,15 +14,6 @@
             <div class="location" style="position: absolute; right: 30px">{{ item.location }}</div>
         </div>
     </div>
-
-    <div class="subtitle">{{ item.requirementLabel }} </div>
-    
-    <div class="bottom" style="display: -webkit-flex;display: flex;">
-        <div class="avatar" ><img :src=item.userAvatar ></div>
-        <div class="recruiters" style="margin-left:10px;">{{ item.nickname }}</div>
-        <div class="location" style="position:absolute;right:30px;">{{ item.location }}</div>
-    </div>
-
 </template>
 
 <script>
