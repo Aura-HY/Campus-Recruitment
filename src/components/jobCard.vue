@@ -1,19 +1,22 @@
 <template>
     <!-- //这里可以通过点击卡片传卡片的jobId,传对应的值到detail路由中 -->
-    <div class="card" @click="goJobDetail(item.jobId, item.titleJob, item.jobDescription, item.requirementsL, item.salary, item.salaryUnit)" v-for="item in items" :key="item.jobId" style="margin-top: 20px">
-        <div class="top" style="display: -webkit-flex; display: flex">
-            <div class="title">{{ item.titleJob }}</div>
-            <div class="salary">{{ item.salary }} / {{ item.salaryUnit }}</div>
-        </div>
+    <div class="cardbody">
+        <div class="card" @click="goJobDetail(item.jobId, item.titleJob, item.jobDescription, item.requirementsL, item.salary, item.salaryUnit)" v-for="item in items" :key="item.jobId" style="margin-top: 20px">
+            <div class="top" style="display: -webkit-flex; display: flex">
+                <div class="title">{{ item.titleJob }}</div>
+                <div class="salary">{{ item.salary }} / {{ item.salaryUnit }}</div>
+            </div>
 
-        <div class="subtitle">{{ item.requirementLabel }}</div>
+            <div class="subtitle">{{ item.requirementLabel }}</div>
 
-        <div class="bottom" style="display: -webkit-flex; display: flex">
-            <div class="avatar"><img :src="item.userAvatar" /></div>
-            <div class="recruiters" style="margin-left: 10px">{{ item.userName }}</div>
-            <div class="location" style="position: absolute; right: 30px">{{ item.location }}</div>
+            <div class="bottom" style="display: -webkit-flex; display: flex">
+                <div class="avatar"><img :src="item.userAvatar" /></div>
+                <div class="recruiters" style="margin-left: 10px">{{ item.userName }}</div>
+                <div class="location" style="position: absolute; right: 30px">{{ item.location }}</div>
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -76,11 +79,15 @@ export default {
 </script>
 
 <style scoped>
+.cardbody{
+    height: 100%;
+}
 .card{
 opacity: 1;
 background: rgba(255, 255, 255, 1);
 border: 1px solid rgba(229, 229, 229, 1);
 margin:15px;
+position: relative;
 }
 .title {
     margin-left: 20px;
