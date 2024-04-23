@@ -60,16 +60,7 @@ export default {
     return{
       selectedObject:{},
       currentResume : null,
-      items: [
-        {
-          resumeId: '234544',
-          resumeName: '后端简历'
-        },
-        {
-          resumeId: '343245',
-          resumeName: '所测试岗简历' // 最多六个字
-        }
-      ],
+      items: [],
       value13:ref(),
       data:{
         jobId: this.$route.params.jobId,
@@ -80,18 +71,21 @@ export default {
         salaryUnit: this.$route.params.salaryUnit
       },
       job:{
-        userId:'3',
+        userId:localStorage.getItem('userId'),
         jobId:this.$route.params.jobId,
       }
     };
   },
-  created() {},
+  created() {
+    this.getResume()
+  },
   mounted() {},
   updated() {},
   methods: {
-        handleClick() {
+        async handleClick() {
           if(this.currentResume!=null){
             Snackbar.success('投递成功');
+            user.addSendResume(this.currentResume);
           }else{
             Snackbar.success('请选择简历');
           }
@@ -113,6 +107,11 @@ export default {
         },
         share(){
           console.log(this.data.jobId);
+        },
+        async getResume(){
+          const userId = localStorage.getItem('userId');
+          const resume = await user.getResume(userId);
+          this.items = resume;
         }
     },
     components:{
