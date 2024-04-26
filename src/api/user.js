@@ -39,6 +39,7 @@ const user = {
     getResume(userId){
         return request(`${moduleUrl}/getResume`,{ userId });
     },
+    //投递简历
     addSendResume(resumeId, userId, recruitersId){
         return request(`${moduleUrl}/addSendResume`,{ resumeId, userId, recruitersId });
     }
