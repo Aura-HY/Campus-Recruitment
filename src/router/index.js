@@ -69,7 +69,7 @@ const router = createRouter({
       name: 'Login',
       component: () => import('../pages/Login.vue'),
       meta: {
-        message: true,
+        Login: true,
       },
     },
     {

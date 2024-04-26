@@ -91,7 +91,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* 设置用户信息盒子 */
 .headImage {
     /* border: 1px solid  #2E4E7E;  藏青色边框 */

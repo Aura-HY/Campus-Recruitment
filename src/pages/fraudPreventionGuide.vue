@@ -35,7 +35,7 @@ export default{
 
 </script>
 
-<style>
+<style scoped>
 .top{
     margin-bottom: 20px;
     margin-top:80px;
