@@ -20,7 +20,12 @@ export default {
 </script>
 
 <style scoped>
-.top{
-    margin-bottom: 20px;
-    margin-top:80px;
-}</style>
+.top {
+    height: 10%;
+    width: 100%;
+}
+.main{
+    overflow-y: auto;
+    height: 90%;
+}
+</style>
