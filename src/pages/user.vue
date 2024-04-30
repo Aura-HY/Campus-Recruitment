@@ -12,13 +12,11 @@
         <!-- 用户名称 -->
         <div class="nickname">
             <p class="name">{{ user.name }}</p>
-            <p class="subtext" @click="goSelectResume">我要找工作</p>
+            <p class="subtext" @click="goSelectResume()">我要找工作</p>
         </div>
     </div>
 
-    <var-card  
-        
-    />
+    <var-card />
 
     <!-- 跳转栏 -->
     <div class="jumpBar">
@@ -48,11 +46,11 @@
     <!-- 功能栏 -->
     <div class="controlBar">
         <div class="smallControlBar" @click="goSelectResume">
-            <img src="" alt="Icon 1" @click="goSelectResume" />
+            <var-icon name="file-document-outline" @click="goSelectResume" :size="28"/>
             <p class="text">我的简历</p>
         </div>
         <div class="smallControlBar" @click="goFraudPreventionGuide">
-            <img src="" alt="Icon 2" @click="goFraudPreventionGuide" />
+            <var-icon name="error" @click="goFraudPreventionGuide" :size="28"/>
             <p class="text">防诈指南</p>
         </div>
     </div>
@@ -106,7 +104,6 @@ export default {
     border: 1px solid rgba(229, 229, 229, 1);
     margin: 15px;
 }
-
 
 /* 设置头像与信息之间的间距 */
 .avatar {
@@ -168,7 +165,6 @@ export default {
 .ad {
     margin-bottom: 20px; /* 设置统计信息盒子与广告盒子之间的间距 */
     height: 300px;
-
 }
 
 /* 设置功能栏布局样式 */

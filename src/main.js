@@ -24,4 +24,12 @@ const viewportTheme = Themes.toViewport(Themes.md3Dark, {
 //引入vue router
 import router from './router/index';
 
-createApp(App).use(Varlet).use(router).mount('#app')
+//引入pinia
+import { createPinia } from 'pinia'
+
+const pinia = createPinia()
+
+createApp(App).use(Varlet).use(router).use(pinia).mount('#app')
+
+
+
