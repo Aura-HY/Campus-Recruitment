@@ -46,7 +46,44 @@ const user = {
     //上传头像
     uploadAvatar(userAvatar){
         return request(`${moduleUrl}/uploadAvatar`,{ userAvatar });
-    }
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //我的 的区域 的后端
+    
+    //获得当前登录用户的简历列表
+    getUserResumes(userId){
+        return request(`${moduleUrl}/getUserResumes`, { userId });
+    },
+
+    //获取用户简历的详细信息
+    getUserResumesInfo(resumeId){
+        return request(`${moduleUrl}/getUserResumesInfo`, { resumeId });
+    },
 };
 
 export default user;

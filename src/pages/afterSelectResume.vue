@@ -1,6 +1,6 @@
 <template>
     <div class="top">
-        <cnResumeBar></cnResumeBar>
+        <asResumeBar></asResumeBar>
     </div>
 
     <!-- 大简历卡片 -->
@@ -49,20 +49,36 @@
 </template>
 
 <script>
-import cnResumeBar from '../components/cnResumeBar.vue';
+import asResumeBar from '../components/asResumeBar.vue';
+import user from '../api/user';
 
 export default {
     components: {
-        cnResumeBar
+        asResumeBar
     },
+    name: 'intoResume',
     data() {
         return {
+            userResumesInfo:[],
         };
     },
+    created() {
+        this.getUserResumesInfo(this.$route.params.resumeId);
+    },
+    mounted() {},
+    updated() {},
     methods: {
-        goUploade(index) {
-            this.$router.push('/fraudPreventionGuide');
+        handleResumeClick(resumeId){
+            this.getUserResumesInfo(resumeId);
+        },
+        async getUserResumesInfo(resumeId) {
+            console.log(resumeId);
+            const userResumesInfo = await user.getUserResumesInfo(resumeId);
+            console.log(userResumesInfo);
+            this.userResumesInfo = Object.keys(userResumesInfo[0]).map(key => ({ [key]: userResumesInfo[0][key] }));
         }
+        
+        
     }
 };
 </script>

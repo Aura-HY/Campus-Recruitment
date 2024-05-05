@@ -88,6 +88,14 @@ const router = createRouter({
         message: true,
       },
     },
+    {
+      path: '/afterSelectResume/:resumeId',
+      name: 'afterSelectResume',
+      component: () => import('../pages/afterSelectResume.vue'),
+      meta: {
+        message: true,
+      },
+    }
   ],
 });
 
