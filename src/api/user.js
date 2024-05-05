@@ -42,6 +42,10 @@ const user = {
     //投递简历
     addSendResume(resumeId, userId, recruitersId){
         return request(`${moduleUrl}/addSendResume`,{ resumeId, userId, recruitersId });
+    },
+    //上传头像
+    uploadAvatar(userAvatar){
+        return request(`${moduleUrl}/uploadAvatar`,{ userAvatar });
     }
 };
 
