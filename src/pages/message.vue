@@ -36,7 +36,7 @@
 				<mt-tab-item id="3">新职位</mt-tab-item>
 				</mt-navbar>
 
-				<!-- tab-container -->
+			tab-container 
 				<mt-tab-container v-model="selected">
 				<mt-tab-container-item id="1">
 					<div class="tabContent1">
@@ -46,7 +46,7 @@
 					</div>
 				</mt-tab-container-item>
 				<mt-tab-container-item id="2">
-					<!-- <div class="container2" v-for="people in peoples" :key="people.id" @click="peopleClick">
+					 <div class="container2" v-for="people in peoples" :key="people.id" @click="peopleClick">
 					  <div class="message">
 						  <img :src="people.src" alt="" class="avatar">
 						  <div class="all">
@@ -62,7 +62,7 @@
 							<div class="chat">{{people.chat}}</div>
 						  </div>
 					  </div>
-				  	</div> -->
+				  	</div> 
 				</mt-tab-container-item>
 				<mt-tab-container-item id="3">
 
@@ -71,7 +71,7 @@
         </mt-tab-container-item>  
       </mt-tab-container>  
     </div>  
-        <!-- <tabbar></tabbar> -->
+         <!-- <tabbar></tabbar> -->
   </div>
 </template>
 

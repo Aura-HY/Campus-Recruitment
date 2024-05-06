@@ -56,6 +56,23 @@ const router = createRouter({
         message: true,
       },
     },
+   {
+          path: '/company',
+          name: 'company',
+          component: () => import('../pages/company.vue'),
+          meta: {
+            message: true,
+          },
+        },
+    {
+              path: '/index',
+              name: 'index',
+              component: () => import('../pages/index.vue'),
+              meta: {
+                message: true,
+              },
+            },
+
     {
       path: '/createNewResume',
       name: 'createNewResume',
