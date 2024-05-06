@@ -81,7 +81,39 @@ const router = createRouter({
         message: true,
       },
     },
-  ],
+{
+    path: '/Login',
+    name: 'Login',
+    component: () => import('../pages/Login.vue'),
+    meta: {
+      Login: true,
+    },
+  },
+  {
+    path: '/Register',
+    name: 'Register',
+    component: () => import('../pages/register.vue'),
+    meta: {
+      message: true,
+    },
+  },
+  {
+    path: '/favoritesCollections',
+    name: 'favoritesCollections',
+    component: () => import('../pages/favoritesCollections.vue'),
+    meta: {
+      message: true,
+    },
+  },
+  {
+    path: '/afterSelectResume/:resumeId',
+    name: 'afterSelectResume',
+    component: () => import('../pages/afterSelectResume.vue'),
+    meta: {
+      message: true,
+    },
+  }
+  ]
 });
 
 export default router;

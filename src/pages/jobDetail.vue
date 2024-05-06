@@ -52,6 +52,7 @@
 import { ref,onMounted } from 'vue'
 import { Snackbar } from '@varlet/ui'
 import NavigationBarVue from '../components/navigationBar.vue';
+import user from '../api/user'
 
 export default {
   name: 'jobDetail',
@@ -59,16 +60,7 @@ export default {
     return{
       selectedObject:{},
       currentResume : null,
-      items: [
-        {
-          resumeId: '234544',
-          resumeName: '后端简历'
-        },
-        {
-          resumeId: '343245',
-          resumeName: '所测试岗简历' // 最多六个字
-        }
-      ],
+      items: [],
       value13:ref(),
       data:{
         jobId: this.$route.params.jobId,
@@ -77,17 +69,23 @@ export default {
         requirementsL: this.$route.params.requirementsL,
         salary: this.$route.params.salary,
         salaryUnit: this.$route.params.salaryUnit
+      },
+      job:{
+        userId:localStorage.getItem('userId'),
+        jobId:this.$route.params.jobId,
       }
-      
     };
   },
-  created() {},
+  created() {
+    this.getResume()
+  },
   mounted() {},
   updated() {},
   methods: {
-        handleClick() {
+        async handleClick() {
           if(this.currentResume!=null){
             Snackbar.success('投递成功');
+            user.addSendResume(this.currentResume,this.job.userId,);
           }else{
             Snackbar.success('请选择简历');
           }
@@ -96,14 +94,24 @@ export default {
         sendResumeId(resumeId){
           this.currentResume=resumeId;
         },
-        collect(){
-          console.log(this.data.jobId);
+        
+        //添加收藏
+        async collect(){
+          Snackbar.success('收藏成功');
+          user.addCollect(this.job.userId,this.job.jobId);
         },
+
         report(){
-          console.log(this.data.jobId);
+          Snackbar.success('举报成功');
+          user.addReport(this.job.userId,this.job.jobId);
         },
         share(){
           console.log(this.data.jobId);
+        },
+        async getResume(){
+          const userId = localStorage.getItem('userId');
+          const resume = await user.getResume(userId);
+          this.items = resume;
         }
     },
     components:{

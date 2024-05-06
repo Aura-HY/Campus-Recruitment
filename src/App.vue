@@ -3,7 +3,7 @@
         <router-view></router-view>
     </div>
 
-    <div class="foot">
+    <div class="foot" v-if="!$route.meta.Login">
         <var-bottom-navigation v-model:active="active" fixed="true">
             <var-bottom-navigation-item name="home" label="首页" icon="home" @click="goHome" />
             <var-bottom-navigation-item name="message" label="信息" icon="message-text-outline" @click="goMessage" />
@@ -17,6 +17,11 @@
 import navigationBarVue from './components/navigationBar.vue';
 import { useRouter } from 'vue-router';
 export default {
+    data() {
+    return {
+      active: ('home') // 在data()方法中使用Vue.ref()创建响应式数据
+    };
+    },
     components: {
         navigationBarVue
     },
@@ -38,14 +43,10 @@ export default {
 </script>
 
 <style scoped>
-.head{
-    width: 100vw;
-    height: 7vh;
-}
-
 .body{
     width: 100vw;
     height: 93vh;
+
 }
 
 .foot{

@@ -15,7 +15,7 @@
 
         <!-- 骚话框 -->
         <div class="sh">
-
+            请帮蔡老师找一个女朋友
         </div>
 
         <!-- 广告 今麦郎打钱！！！ -->
@@ -35,23 +35,36 @@ export default{
 
 </script>
 
-<style>
-.top{
-    margin-bottom: 20px;
-    margin-top:80px;
+<style scoped>
+.top {
+    height: 10%;
+    width: 100%;
 }
+
 .text1{
     font-weight: bold;
+    
 }
+
 /* 设置防诈小指南盒子 */
 .text{
     border: 1px solid #000;
     margin-bottom: 20px; /* 设置防诈小指南与骚话之间的间距 */
+    opacity: 1;
+
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin: 15px;
 }
 /* 设置骚话盒子 */
 .sh{
     margin-bottom: 20px; /* 设置骚话盒子与广告盒子之间的间距 */
     height: 150px;
+
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin: 15px;
 }
 
 /* 设置广告盒子 */
