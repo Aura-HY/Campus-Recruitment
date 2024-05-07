@@ -106,6 +106,14 @@ const router = createRouter({
         chat: true,
       },
   }
+  {
+    path: '/message/notice',
+    name: 'notice',
+    component: () => import('../pages/notice.vue'),
+    meta: {
+      message: true,
+    },
+  }
   ]
 });
 

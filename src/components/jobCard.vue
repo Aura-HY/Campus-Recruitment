@@ -1,7 +1,7 @@
 <template>
     <!-- //这里可以通过点击卡片传卡片的jobId,传对应的值到detail路由中 -->
     <div class="cardbody">
-        <div class="card" @click="goJobDetail(item.jobId, item.titleJob, item.jobDescription, item.requirementsL, item.salary, item.salaryUnit)" v-for="item in items" :key="item.jobId" style="margin-top: 20px">
+        <div class="card" @click="goJobDetail(item.jobId)" v-for="item in items" :key="item.jobId" style="margin-top: 20px">
             <div class="top" style="display: -webkit-flex; display: flex">
                 <div class="title">{{ item.titleJob }}</div>
                 <div class="salary">{{ item.salary }} / {{ item.salaryUnit }}</div>
@@ -28,7 +28,6 @@ export default {
     props: ['items'],
     data() {
         return {
-            //items是个数组
             items: [],    
         };
     },
@@ -39,16 +38,11 @@ export default {
         }
     },
     methods: {
-        goJobDetail(jobId, titleJob, jobDescription, requirementsL, salary, salaryUnit) {
+        goJobDetail(jobId) {
             this.$router.push({
                 name: 'jobDetail',
                 params: {
-                    jobId: jobId,
-                    titleJob: titleJob,
-                    jobDescription: jobDescription,
-                    requirementsL: requirementsL,
-                    salary: salary,
-                    salaryUnit: salaryUnit
+                    jobId: jobId
                 }
             });
         },
@@ -57,7 +51,7 @@ export default {
             const items = await user.getJobList();
             this.items = items;
         },
-
+        //拿到部分职业
         async typeJob(paramId){
             const items = await user.getTypeJob({paramId:paramId});
             this.items=items;
@@ -67,6 +61,7 @@ export default {
             this.queryJob();
     },
     watch:{
+        //筛选
         paramId(newVal,oldVal){
             if(newVal=='5'){
                 this.queryJob();
