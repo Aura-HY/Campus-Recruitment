@@ -105,7 +105,7 @@ const router = createRouter({
       meta: {
         chat: true,
       },
-  }
+  },
   {
     path: '/message/notice',
     name: 'notice',

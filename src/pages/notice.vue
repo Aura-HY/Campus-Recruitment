@@ -5,9 +5,7 @@
     <div class="body">
         <noticeCard></noticeCard>
     </div>
-    <div class="chatBox chatBox-left">
-    你好
-</div>
+    
 </template>
 
 <script>
