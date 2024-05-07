@@ -33,7 +33,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/jobDetail/:jobId/:titleJob/:jobDescription/:requirementsL/:salary/:salary/:salaryUnit',
+      path: '/jobDetail/:jobId',
       name: 'jobDetail',
       component: () => import('../pages/jobDetail.vue'),
       // meta: {
@@ -92,6 +92,14 @@ const router = createRouter({
       path: '/afterSelectResume/:resumeId',
       name: 'afterSelectResume',
       component: () => import('../pages/afterSelectResume.vue'),
+      meta: {
+        message: true,
+      },
+    },
+    {
+      path: '/message/notice',
+      name: 'notice',
+      component: () => import('../pages/notice.vue'),
       meta: {
         message: true,
       },
