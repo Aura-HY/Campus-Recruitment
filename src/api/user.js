@@ -24,8 +24,8 @@ const user = {
         return request(`${moduleUrl}/addCollect`,{ userId , jobId });
     },
     //添加举报的职位到举报表
-    addReport(userId,jobId){
-        return request(`${moduleUrl}/addReport`,{ userId , jobId });
+    addReport(userId,jobId,reportTime){
+        return request(`${moduleUrl}/addReport`,{ userId , jobId, reportTime });
     },
     //用户注册
     addUser(userId,password,phoneNumber,nickname,identityParam){
@@ -39,11 +39,22 @@ const user = {
     getResume(userId){
         return request(`${moduleUrl}/getResume`,{ userId });
     },
-    addSendResume(resumeId, userId, recruitersId){
-        return request(`${moduleUrl}/addSendResume`,{ resumeId, userId, recruitersId });
+    //投递简历
+    addSendResume(resumeId, userId, jobId, recruitersId, time){
+        return request(`${moduleUrl}/addSendResume`,{ resumeId, userId, jobId, recruitersId, time });
     },
-
-
+    //上传头像
+    uploadAvatar(userAvatar){
+        return request(`${moduleUrl}/uploadAvatar`,{ userAvatar });
+    },
+    //获取职位详情
+    getJobDetail(jobId){
+        return request(`${moduleUrl}/getJobDetail`,{ jobId });
+    },
+    //获取通知列表
+    getNotice(){
+        return request(`${moduleUrl}/getNotice`);
+    },
 
 
 

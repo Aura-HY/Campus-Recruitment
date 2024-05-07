@@ -3,7 +3,7 @@
         <router-view></router-view>
     </div>
 
-    <div class="foot" v-if="!$route.meta.Login">
+    <div class="foot" v-if="!($route.meta.Login||$route.meta.Register)">
         <var-bottom-navigation v-model:active="active" fixed="true">
             <var-bottom-navigation-item name="home" label="首页" icon="home" @click="goHome" />
             <var-bottom-navigation-item name="message" label="信息" icon="message-text-outline" @click="goMessage" />
