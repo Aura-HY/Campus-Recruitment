@@ -23,7 +23,7 @@ function goSelectResume() {
 }
 
 function handleClick() {
-    Snackbar.success({name:'notice'});
+    router.push({name:'notice'});
 }
 </script>
 

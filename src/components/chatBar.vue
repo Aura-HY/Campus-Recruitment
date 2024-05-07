@@ -26,7 +26,7 @@ export default {
  props:{
     nickname:{
         type:String,
-        default:''
+        default:'二饭姆斯汉堡'
     }
  },
  methods:{

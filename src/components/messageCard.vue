@@ -48,7 +48,7 @@ export default {
             },
             {
                 recruitersId:'555',
-                messageTime:'21:00',
+                messageTime:'11:00',
                 messageType:'',
                 userAvatar:'https://img.ixintu.com/download/jpg/201912/8b40d5fe24a54284f38b009654a265d4.jpg!con',
                 nickname:'一饭杰西五',
