@@ -13,12 +13,12 @@ import './assets/iconfont/iconfont.css'
 // 使用 Postcss + Themes.toViewport 进行移动端适配
 import { Themes } from '@varlet/ui'
 const viewportTheme = Themes.toViewport(Themes.md3Dark, {
-    // 默认值为 375
-    viewportWidth: 375,
-    // 默认值为 'vmin'
-    viewportUnit: 'vmin',
-    // 默认值为 6
-    unitPrecision: 6,
+    // 默认值为 375
+    viewportWidth: 375,
+    // 默认值为 'vmin'
+    viewportUnit: 'vmin',
+    // 默认值为 6
+    unitPrecision: 6,
 })
 
 //引入vue router
