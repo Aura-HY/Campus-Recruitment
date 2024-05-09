@@ -55,9 +55,15 @@ const user = {
     getNotice(){
         return request(`${moduleUrl}/getNotice`);
     },
-
-
-
+    getMessageList(recruitersId){
+        return request(`${moduleUrl}/getMessageList`,{ recruitersId });
+    },
+    addMessage(content,jobSeekerId,recruitersId,messageTime){
+        return request(`${moduleUrl}/addMessage`,{ content, jobSeekerId, recruitersId, messageTime });
+    },
+    getMessageMan(userId){
+        return request(`${moduleUrl}/getMessageMan`,{ userId });
+    },
 
 
 
