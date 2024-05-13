@@ -4,20 +4,20 @@ import fileRequest from '../utils/fileRequest';
 
 const user = {
     //首页渲染
-    getJobList(){
+    getJobList() {
         return request(`${moduleUrl}/home/getJobList`);
     },
     //获取可选的职位类型
-    getTypeList(){
+    getTypeList() {
         return request(`${moduleUrl}/home/getTypeList`);
     },
     //获取选择类型后的
-    getTypeJob(typeId){
-        return request(`${moduleUrl}/home/getTypeJob`,typeId);
+    getTypeJob(typeId) {
+        return request(`${moduleUrl}/home/getTypeJob`, typeId);
     },
     //添加收藏的职位到收藏表
-    addCollect(userId,jobId){
-        return request(`${moduleUrl}/addCollect`,{ userId , jobId });
+    addCollect(userId, jobId) {
+        return request(`${moduleUrl}/addCollect`, { userId, jobId });
     },
     //添加举报的职位到举报表
     addReport(userId,jobId,reportTime){
@@ -28,16 +28,15 @@ const user = {
         return request(`${moduleUrl}/addUser`,{ userId, password, identityParam, userAvatar })
     },
     //获取用户密码
-    getUserPassword(userId){
-        return request(`${moduleUrl}/getUserPassword`,{ userId });
+    getUserPassword(userId) {
+        return request(`${moduleUrl}/getUserPassword`, { userId });
     },
     //获得当前登录用户的简历列表
-    getResume(userId){
-        return request(`${moduleUrl}/getResume`,{ userId });
+    getResume(userId) {
+        return request(`${moduleUrl}/getResume`, { userId });
     },
-    //投递简历
-    addSendResume(resumeId, userId, jobId, recruitersId, time){
-        return request(`${moduleUrl}/addSendResume`,{ resumeId, userId, jobId, recruitersId, time });
+    addSendResume(resumeId, userId, recruitersId) {
+        return request(`${moduleUrl}/addSendResume`, { resumeId, userId, recruitersId });
     },
     //上传头像
     uploadAvatar(userAvatar){
@@ -87,16 +86,44 @@ const user = {
 
 
     //我的 的区域 的后端
-    
+
     //获得当前登录用户的简历列表
-    getUserResumes(userId){
+    getUserResumes(userId) {
         return request(`${moduleUrl}/getUserResumes`, { userId });
     },
 
     //获取用户简历的详细信息
-    getUserResumesInfo(resumeId){
+    getUserResumesInfo(resumeId) {
         return request(`${moduleUrl}/getUserResumesInfo`, { resumeId });
     },
+    //统计用户收藏的简历份数总数
+    favoritesCollectionsSum(data) {
+        return request(`${moduleUrl}/favoritesCollectionsSum`, data);
+    },
+    //统计用户沟通过的聊天总数
+    sessionSum(data) {
+        return request(`${moduleUrl}/sessionSum`, data);
+    },
+    //统计用户已投简历总数
+    resumeTrueSum(data) {
+        return request(`${moduleUrl}/resumeTrueSum`, data);
+    },
+    //统计用户待面试总数
+    interviewedSum(data) {
+        return request(`${moduleUrl}/interviewedSum`, data);
+    },
+    //读取用户的昵称和头像
+    getUserBasic(data) {
+        return request(`${moduleUrl}/getUserBasic`, data);
+    },
+    //添加用户新简历
+    addNewResumeInfo(data){
+        return request(`${moduleUrl}/addNewResumeInfo`, data);
+    },
+    //读取用户收藏的职位
+    getUserFavoritesJob(data){
+        return request(`${moduleUrl}/getUserFavoritesJob`, data);
+    }
 };
 
 export default user;

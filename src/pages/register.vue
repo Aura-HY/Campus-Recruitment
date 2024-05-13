@@ -25,8 +25,8 @@
                         <var-option v-for="identity in userIdentity" :key="identity.identityParam" :label=identity.identity @click="identityFunction(identity.identityParam)"/>
                 </var-select>
         </div>
-        <div class="login">
-            <var-button style="width:95%;" @click="gotoLogin" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Register</var-button>
+        <div class="verificationCode">
+            <var-button style="width:95%;" @click="gotoCompareCaptcha" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Get A Verification Code</var-button>
         </div>
 </template>
 
@@ -44,6 +44,7 @@ export default {
                 userId:'',
                 password:'',
                 phoneNumber:'',
+                mailbox:'',
                 nickname:'',
                 identity:'',
                 userAvatar:''
@@ -97,7 +98,7 @@ export default {
     margin-top: 5%;
     margin-left:5%;
 }
-.login{
+.verificationCode{
     /* position: absolute;
     top: 70%;
     left: 19%;

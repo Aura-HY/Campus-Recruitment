@@ -5,13 +5,13 @@
         <div class="avatar">
             <!--手机端得点击方可悬浮 但电脑端滑到上面即可-->
             <var-space align="center">
-                <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="78" fit="cover" bordered="true" hoverable="true" />
+                <var-avatar :src="user.userAvatar" size="78" fit="cover" bordered="true" hoverable="true" />
             </var-space>
         </div>
 
         <!-- 用户名称 -->
         <div class="nickname">
-            <p class="name">{{ user.name }}</p>
+            <p class="name">{{ user.nickname }}</p>
             <p class="subtext" @click="goSelectResume()">我要找工作</p>
         </div>
     </div>
@@ -21,19 +21,19 @@
     <!-- 跳转栏 -->
     <div class="jumpBar">
         <div class="stat-item">
-            <p class="stat-number">23</p>
+            <p class="stat-number">{{ sessionSum }}</p>
             <p class="stat-text">沟通过</p>
         </div>
         <div class="stat-item">
-            <p class="stat-number">18</p>
+            <p class="stat-number">{{ resumeTrueSum }}</p>
             <p class="stat-text">已投简历</p>
         </div>
         <div class="stat-item">
-            <p class="stat-number">23</p>
+            <p class="stat-number">{{ interviewedSum }}</p>
             <p class="stat-text">待面试</p>
         </div>
         <div class="stat-item" @click="goFavoritesCollections">
-            <p class="stat-number">11</p>
+            <p class="stat-number">{{ resumeSum }}</p>
             <p class="stat-text">收藏</p>
         </div>
     </div>
@@ -46,35 +46,53 @@
     <!-- 功能栏 -->
     <div class="controlBar">
         <div class="smallControlBar" @click="goSelectResume">
-            <var-icon name="file-document-outline" @click="goSelectResume" :size="28"/>
+            <var-icon name="file-document-outline" @click="goSelectResume" :size="28" />
             <p class="text">我的简历</p>
         </div>
         <div class="smallControlBar" @click="goFraudPreventionGuide">
-            <var-icon name="error" @click="goFraudPreventionGuide" :size="28"/>
+            <var-icon name="error" @click="goFraudPreventionGuide" :size="28" />
             <p class="text">防诈指南</p>
         </div>
     </div>
 </template>
 
 <script>
+import user from '@/api/user';
+import { userStore } from '@/stores/userStore';
+
 export default {
     data() {
         return {
             user: {
-                avatar: 'path/to/avatar.jpg', // 用户头像路径
-                name: '' // 用户名称，从数据库获取
-            }
+                nickname: '', // 用户名称，从数据库获取
+                userAvatar: '' // 用户头像路径
+            },
+            sessionSum: null,
+            resumeTrueSum: null,
+            resumeSum: null,
+            userId: null,
+            interviewedSum: null
         };
     },
-    mounted() {
-        this.getUserInfo();
+
+    created() {
+        const userInfo = userStore();
+        this.userId = userInfo.userId;
+        this.getUserBasicInfo(this.userId);
     },
+    mounted() {
+        this.getUserFavoritesCollectionsSum(this.userId);
+        this.getUserSessionSum(this.userId);
+        this.getUserResumeTrueSum(this.userId);
+        this.getUserInterviewedSum(this.userId);
+        
+    },
+    updated() {},
     methods: {
-        getUserInfo() {
-            // 模拟从数据库获取用户信息
-            setTimeout(() => {
-                this.user.name = '陈景清'; // 从数据库获取的用户名称
-            });
+        //读取用户的昵称和头像
+        async getUserBasicInfo(userId) {
+            const getUserBasic = await user.getUserBasic({ userId });
+            this.user = getUserBasic[0];
         },
         goSelectResume() {
             this.$router.push('/selectResume');
@@ -84,6 +102,26 @@ export default {
         },
         goFavoritesCollections() {
             this.$router.push('/favoritesCollections');
+        },
+        //统计用户收藏的简历份数总数
+        async getUserFavoritesCollectionsSum(userId) {
+            const resumeSum = await user.favoritesCollectionsSum({ userId });
+            this.resumeSum = resumeSum[0].count;
+        },
+        //统计用户沟通过的聊天总数
+        async getUserSessionSum(userId) {
+            const sessionSum = await user.sessionSum({ userId });
+            this.sessionSum = sessionSum[0].count;
+        },
+        //统计用户已投简历总数
+        async getUserResumeTrueSum(userId) {
+            const resumeTrueSum = await user.resumeTrueSum({ userId });
+            this.resumeTrueSum = resumeTrueSum[0].count;
+        },
+        //统计用户待面试总数
+        async getUserInterviewedSum(userId) {
+            const interviewedSum = await user.interviewedSum({ userId });
+            this.interviewedSum = interviewedSum[0].count;
         }
     }
 };

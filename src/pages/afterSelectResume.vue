@@ -7,43 +7,43 @@
     <div class="resumeCards">
             <!-- 输入个人信息框盒子 -->
                 <div class="personal-info">
-                    <var-input placeholder="简历名称" v-model="value" />
+                    <var-input placeholder="简历名称" v-model="resumeName" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="姓名" v-model="value" />
+                    <var-input placeholder="姓名" v-model="name" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="性别" v-model="value" />
+                    <var-input placeholder="性别" v-model="gender" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="年级" v-model="value" />
+                    <var-input placeholder="年级" v-model="grade" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="学院" v-model="value" />
+                    <var-input placeholder="学院" v-model="academy" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="班级" v-model="value" />
+                    <var-input placeholder="班级" v-model="classNumber" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="学号" v-model="value" />
+                    <var-input placeholder="学号" v-model="studentId" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="微信号" v-model="value" />
+                    <var-input placeholder="微信号" v-model="wechat" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="练习电话" v-model="value" />
+                    <var-input placeholder="练习电话" v-model="phone" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="是否拥有健康证" v-model="value" />
+                    <var-input placeholder="是否拥有健康证" v-model="healthCertificate" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="个人简历" v-model="value" />
+                    <var-input placeholder="个人简历" v-model="curriculumVitae" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="工作经历" v-model="value" />
+                    <var-input placeholder="工作经历" v-model="workExperience" />
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="荣誉证书" v-model="value" />
+                    <var-input placeholder="荣誉证书" v-model="honorCertificate" />
                 </div>
             </div>
 </template>
@@ -59,7 +59,19 @@ export default {
     name: 'intoResume',
     data() {
         return {
-            userResumesInfo:[],
+            resumeName:'',
+            name:'',
+            gender:'',
+            grade:'',
+            academy:'',
+            classNumber:'',
+            studentId:'',
+            wechat:'',
+            phone:'',
+            healthCertificate:'',
+            curriculumVitae:'',
+            workExperience:'',
+            honorCertificate:''
         };
     },
     created() {
