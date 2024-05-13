@@ -23,6 +23,11 @@
                     <var-icon class="prepend-icon" name="lock-outline" />
                 </template>
                 </var-input>
+                <var-input style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="mailbox" v-model="userRegister.mailbox">
+                <template #prepend-icon>
+                    <var-icon class="prepend-icon" name="lock-outline" />
+                </template>
+                </var-input>
                 <var-input style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="nickname" v-model="userRegister.nickname">
                 <template #prepend-icon>
                     <var-icon class="prepend-icon" name="lock-outline" />
@@ -32,8 +37,8 @@
                         <var-option v-for="identity in userIdentity" :key="identity.identityParam" :label=identity.identity @click="identityFunction(identity.identityParam)"/>
                     </var-select>
         </div>
-        <div class="login">
-            <var-button style="width:95%;" @click="gotoLogin" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Register</var-button>
+        <div class="verificationCode">
+            <var-button style="width:95%;" @click="gotoCompareCaptcha" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Get A Verification Code</var-button>
         </div>
 </template>
 
@@ -49,6 +54,7 @@ export default {
                 userId:'',
                 password:'',
                 phoneNumber:'',
+                mailbox:'',
                 nickname:'',
                 identity:''
             },
@@ -63,13 +69,13 @@ export default {
         }
     },
     methods:{
-        async gotoLogin(){
-            if(this.userRegister.userId === '' || this.userRegister.password === '' || this.userRegister.phoneNumber === '' || this.userRegister.nickname === '' || this.userRegister.identity === ''){
+        async gotoCompareCaptcha(){
+            if(this.userRegister.userId === '' || this.userRegister.password === '' || this.userRegister.phoneNumber === '' || this.userRegister.mailbox === '' || this.userRegister.nickname === '' || this.userRegister.identity === '' ){
                 Snackbar.error('注册失败');
             }else{
                 Snackbar.success('注册成功');
-                user.addUser(this.userRegister.userId,this.userRegister.password,this.userRegister.phoneNumber,this.userRegister.nickname,this.userRegister.identity)
-                this.$router.push({name:'Login'})
+                user.addUser(this.userRegister.userId,this.userRegister.password,this.userRegister.phoneNumber,this.userRegister.mailbox,this.userRegister.nickname,this.userRegister.identity)
+                this.$router.push({name:'compareCode'})
             }
             
         },
@@ -89,7 +95,7 @@ export default {
     margin-top: 10%;
     margin-left:5%;
 }
-.login{
+.verificationCode{
     /* position: absolute;
     top: 70%;
     left: 19%;

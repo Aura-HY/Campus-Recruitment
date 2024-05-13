@@ -95,7 +95,15 @@ const router = createRouter({
       meta: {
         message: true,
       },
-    }
+    },
+    {
+      path: '/compareCode',
+      name: 'compareCode',
+      component: () => import('../pages/compareCode.vue'),
+      meta: {
+        compareCode: true,
+      },
+    },
   ],
 });
 

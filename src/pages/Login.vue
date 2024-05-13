@@ -25,6 +25,8 @@
 <script>
 import { Snackbar } from '@varlet/ui'
 import user from '../api/user'
+import {userStore} from '@/stores/userStore';
+
 export default {
     data(){
         return{
@@ -35,6 +37,7 @@ export default {
             result:false
         }
     },
+    
     methods:{
         async gotoHome(){
             const password1 = await user.getUserPassword(this.userLogin.userId);
@@ -43,6 +46,11 @@ export default {
                 Snackbar.success('登录成功');
                 localStorage.setItem('userId',this.userLogin.userId);
                 this.$router.push({name:'home'});
+                //引入pinia作全局管理，就现在直接是在登录页面截取userId存入userStore(store文件夹下)中，从而写的时候可以直接用userId
+                const userInfo = userStore();
+                userInfo.$patch({
+                    userId: this.userLogin.userId
+                });
             }
             if(this.userLogin.userId === '' || this.userLogin.password === '' || this.result === false){
                 console.log(this.result);
