@@ -1,6 +1,6 @@
 <template>
   <div class="select">
-    <var-select placeholder="筛选兼职类型" validate-trigger="" chip  multiple v-model="value10" >
+    <var-select placeholder="筛选兼职类型" size="small" variant="outlined" validate-trigger="" chip   v-model="value10" >
             <var-option 
               v-for="item in items" 
               :key="item.paramId"
@@ -39,5 +39,7 @@ export default{
 </script>
 
 <style>
-
+.select{
+  margin-top:3%;
+}
 </style>

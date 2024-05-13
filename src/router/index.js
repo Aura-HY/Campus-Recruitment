@@ -33,12 +33,9 @@ const router = createRouter({
             }
         },
         {
-            path: '/jobDetail/:jobId/:titleJob/:jobDescription/:requirementsL/:salary/:salary/:salaryUnit',
+            path: '/jobDetail/:jobId',
             name: 'jobDetail',
-            component: () => import('../pages/jobDetail.vue')
-            // meta: {
-            //   message: true,
-            // },
+            component: () => import('../pages/jobDetail.vue') // meta: { //   message: true, // },
         },
         {
             path: '/selectResume',
@@ -56,6 +53,7 @@ const router = createRouter({
                 message: true
             }
         },
+
         {
             path: '/createNewResume',
             name: 'createNewResume',
@@ -77,7 +75,7 @@ const router = createRouter({
             name: 'Register',
             component: () => import('../pages/register.vue'),
             meta: {
-                message: true
+                Register: true
             }
         },
         {
@@ -97,7 +95,7 @@ const router = createRouter({
             }
         },
         {
-            path: '/message/chat/:recruitersId ',
+            path: '/message/chat/:recruitersId/:nickname/:userAvatar ',
             name: 'chat',
             component: () => import('../pages/chat.vue'),
             meta: {
@@ -110,94 +108,6 @@ const router = createRouter({
             component: () => import('../pages/notice.vue'),
             meta: {
                 message: true
-            }
-        },
-        {
-            path: '/user',
-            name: 'user',
-            component: () => import('../pages/user.vue'),
-            meta: {
-                user: true
-            }
-        },
-        {
-            path: '/message',
-            name: 'message',
-            component: () => import('../pages/message.vue'),
-            meta: {
-                message: true
-            }
-        },
-        {
-            path: '/jobDetail/:jobId/:titleJob/:jobDescription/:requirementsL/:salary/:salary/:salaryUnit',
-            name: 'jobDetail',
-            component: () => import('../pages/jobDetail.vue')
-            // meta: {
-            //   message: true,
-            // },
-        },
-        {
-            path: '/selectResume',
-            name: 'selectResume',
-            component: () => import('../pages/selectResume.vue'),
-            meta: {
-                message: true
-            }
-        },
-        {
-            path: '/fraudPreventionGuide',
-            name: 'fraudPreventionGuide',
-            component: () => import('../pages/fraudPreventionGuide.vue'),
-            meta: {
-                message: true
-            }
-        },
-        {
-            path: '/createNewResume',
-            name: 'createNewResume',
-            component: () => import('../pages/createNewResume.vue'),
-            meta: {
-                message: true
-            }
-        },
-        {
-            path: '/Login',
-            name: 'Login',
-            component: () => import('../pages/Login.vue'),
-            meta: {
-                Login: true
-            }
-        },
-        {
-            path: '/Register',
-            name: 'Register',
-            component: () => import('../pages/register.vue'),
-            meta: {
-                message: true
-            }
-        },
-        {
-            path: '/favoritesCollections',
-            name: 'favoritesCollections',
-            component: () => import('../pages/favoritesCollections.vue'),
-            meta: {
-                message: true
-            }
-        },
-        {
-            path: '/afterSelectResume/:resumeId',
-            name: 'afterSelectResume',
-            component: () => import('../pages/afterSelectResume.vue'),
-            meta: {
-                message: true
-            }
-        },
-        {
-            path: '/compareCode',
-            name: 'compareCode',
-            component: () => import('../pages/compareCode.vue'),
-            meta: {
-                compareCode: true
             }
         }
     ]
