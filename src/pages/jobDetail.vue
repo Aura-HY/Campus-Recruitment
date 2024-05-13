@@ -4,10 +4,8 @@
     title="职位详情" 
     select1="收藏" 
     select2="举报" 
-    select3="分享" 
     @cellClick1="collect" 
     @cellClick2="report"
-    @cellClick3="share"
     />
   </div>
 

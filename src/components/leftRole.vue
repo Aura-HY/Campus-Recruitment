@@ -3,7 +3,7 @@
     <div>
         <img class="avatar" :src="userAvatar" />
     </div>
-        <div class="triangle-top-left"  @contextmenu="openMenu"
+        <div class="triangle-top-left"  @contextmenu.prevent="openMenu($event)"
       v-html="messageContent">
             
             
@@ -22,7 +22,6 @@ export default {
     },
     methods: {
       openMenu(e) {
-        e.preventDefault();
         this.$emit("openMenu", e);
       },
   },

@@ -4,7 +4,7 @@
   </div>
   <div class="body">
     <div class="chatBox">
-      <div v-for="item in chatRecordList" :key="item.messageId">
+      <div v-for="(item, index) in chatRecordList" :key="index">
         <!-- 1是学生发消息给招聘人 -->
         <!-- type是发送的信息的类型，后期再补充 -->
         <!-- :messageContent="item.messageContent"这里不要有空格 -->
@@ -12,14 +12,14 @@
           v-if="item.messageType === 1"
           :messageContent="item.messageContent"
           :messageTime="item.messageTime"
-          @openMenu="openMenu($event, item.messageId, true)"
+          @openMenu="openMenu($event, index, true)"
         />
         <leftRole
           v-if = "item.messageType === 2"
           :messageContent="item.messageContent"
           :messageTime="item.messageTime"
           :userAvatar="userAvatar"
-          @openMenu="openMenu($event, item.messageId)"
+          @openMenu="openMenu($event, index)"
         />
       </div>
     </div>
@@ -45,7 +45,7 @@ import chatBar from '../components/chatBar.vue';
 import user from '../api/user';
 import rightRole  from '../components/rightRole.vue';
 import leftRole from '../components/leftRole.vue';
-import { Snackbar } from '@varlet/ui'
+import { Snackbar } from '@varlet/ui';
 export default {
   watch: {
     quickMenuVisible(value) {
@@ -102,21 +102,24 @@ export default {
       }      
     },
     // 撤回消息
-    rollBack() {
+    async rollBack() {
+      await user.deleteMessage(this.chatRecordList[this.index].messageId);
       this.chatRecordList.splice(this.index, 1);
+      
     },
     // js 点击复制到剪贴板函数
     copy() {
-      let content = this.chatRecordList[this.index].content;
+      let content = this.chatRecordList[this.index].messageContent;
 
       if (navigator.clipboard) {
         navigator.clipboard.writeText(content)
         .then(function() {
       // 复制成功时的处理逻辑
-          console.log('文本已成功复制到剪贴板');
+          Snackbar.success('文本复制成功');
         })
         .catch(function(err) {
        // 复制失败时的处理逻辑
+          Snackbar.error('文本复制失败');
           console.error('无法复制文本: ', err);
         });
       } else {
@@ -132,11 +135,14 @@ export default {
     },
     // 显示右键快捷菜单
     openMenu(e, index, ifCan_rollBack) {
+      
       this.ifCan_rollBack = ifCan_rollBack;
+      
       this.index = index;
       this.quickMenu_top = e.clientY;
       this.quickMenu_left = e.clientX;
       this.quickMenuVisible = true;
+      console.log(this.quickMenuVisible);
     },
     // 隐藏右键快捷菜单
     closeMenu() {

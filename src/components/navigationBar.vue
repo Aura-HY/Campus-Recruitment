@@ -16,7 +16,6 @@
                 <template #menu>
                     <var-cell @click="cellClick1" ripple>{{ select1 }}</var-cell>
                     <var-cell @click="cellClick2" ripple>{{ select2 }}</var-cell>
-                    <var-cell @click="cellClick3" ripple>{{ select3 }}</var-cell>
                 </template>
             </var-menu>
         </template>
@@ -60,9 +59,6 @@ methods: {
     cellClick2(){
         this.$emit('cellClick2');
     },
-    cellClick3(){
-        this.$emit('cellClick3');
-    }
 }
 };
 </script>

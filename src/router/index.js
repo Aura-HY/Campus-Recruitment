@@ -79,7 +79,7 @@ const router = createRouter({
     name: 'Register',
     component: () => import('../pages/register.vue'),
     meta: {
-      message: true,
+      Register: true,
     },
   },
   {
