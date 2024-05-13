@@ -24,8 +24,8 @@ const user = {
         return request(`${moduleUrl}/addCollect`, { userId, jobId });
     },
     //添加举报的职位到举报表
-    addReport(userId, jobId) {
-        return request(`${moduleUrl}/addReport`, { userId, jobId });
+    addReport(userId,jobId,reportTime){
+        return request(`${moduleUrl}/addReport`,{ userId , jobId, reportTime });
     },
     //用户注册
     addUser(userId, password, phoneNumber, mailbox, nickname, identityParam) {

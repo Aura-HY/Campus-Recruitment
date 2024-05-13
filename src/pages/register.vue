@@ -7,6 +7,9 @@
         </template>
     </var-app-bar>
             <h1 style="margin-top: 30%;margin-left: 5%;">Register To Your Account</h1>
+            <div class="avatar">
+                <var-uploader v-model="userAvatar" @after-read="handleAfterRead(userAvatar)" :maxlength="1"/>
+            </div>
             <div class="id">
                 <var-input style="width:92%; background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="id" v-model="userRegister.userId">
                 <template #prepend-icon>
@@ -18,31 +21,16 @@
                     <var-icon class="prepend-icon" name="lock-outline" />
                 </template>
                 </var-input>
-                <var-input style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="phone-number" v-model="userRegister.phoneNumber">
-                <template #prepend-icon>
-                    <var-icon class="prepend-icon" name="lock-outline" />
-                </template>
-                </var-input>
-                <var-input style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="mailbox" v-model="userRegister.mailbox">
-                <template #prepend-icon>
-                    <var-icon class="prepend-icon" name="lock-outline" />
-                </template>
-                </var-input>
-                <var-input style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="nickname" v-model="userRegister.nickname">
-                <template #prepend-icon>
-                    <var-icon class="prepend-icon" name="lock-outline" />
-                </template>
-                </var-input>
-                    <var-select style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="identity" v-model="userIdentity.identity">
+                <var-select style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="identity" v-model="userIdentity.identity">
                         <var-option v-for="identity in userIdentity" :key="identity.identityParam" :label=identity.identity @click="identityFunction(identity.identityParam)"/>
-                    </var-select>
+                </var-select>
         </div>
         <div class="verificationCode">
             <var-button style="width:95%;" @click="gotoCompareCaptcha" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Get A Verification Code</var-button>
         </div>
 </template>
 
-<script>
+<script name="register">
 import { Snackbar } from '@varlet/ui';
 import user from '../api/user';
 import { useRouter } from 'vue-router';
@@ -56,7 +44,8 @@ export default {
                 phoneNumber:'',
                 mailbox:'',
                 nickname:'',
-                identity:''
+                identity:'',
+                userAvatar:''
             },
             userIdentity:[{
                 identityParam:'1',
@@ -84,15 +73,38 @@ export default {
         },
         goBack() {
             this.router.go(-1);
+        },
+        async handleAfterRead(file){
+            let img = file[0].file;
+            console.log(file[0].url);
+            let image = new Image() // 一定要设置为let，不然图片不显示
+  image.setAttribute('crossOrigin', 'anonymous') // 解决跨域问题
+  image.src = file[0].url // 如果是本地图片替换为 image.src = imageUrl
+    var canvas = document.createElement("canvas")
+	canvas.width = image.width
+	canvas.height = image.height
+	var context = canvas.getContext('2d')
+	context.drawImage(image, 0, 0, image.width, image.height)
+	var quality = 0.8
+	var dataURL = canvas.toDataURL("image/jpeg", quality) // 使用toDataUrl将图片转换成jpeg的格式,不要把图片压缩成png，因为压缩成png后base64的字符串可能比不转换前的长！   
+            let avatar = new FormData();
+            avatar.append("userId",this.userRegister.userId);
+            avatar.append("file",this.dataURL);
+            avatar.append("size",img.size);
+            avatar.append("name",img.name);
+            user.uploadAvatar(avatar);
         }
     }
 }
 </script>
 
 <style name="Register" scoped>
-
+.avatar{
+    margin-left: 38%;
+    margin-top: 7%;
+}
 .id{
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left:5%;
 }
 .verificationCode{
@@ -104,3 +116,14 @@ export default {
     margin-left:3%;
 }
 </style>
+<!-- // let fr = new FileReader();
+// let fBlob = new Blob([file[0].url]);
+// console.log(fBlob);
+// var ffile = new File([fBlob],img.name)
+// console.log(ffile);
+// fr.readAsDataURL(ffile);
+// console.log(fr.result);
+// fr.onload = () => {
+//     this.userRegister.userAvatar = fr.result;
+// }
+// console.log(this.userRegister.userAvatar); -->

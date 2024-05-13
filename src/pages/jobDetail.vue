@@ -62,13 +62,15 @@ export default {
       currentResume : null,
       items: [],
       value13:ref(),
+      currentTime: '',
       data:{
         jobId: this.$route.params.jobId,
-        titleJob: this.$route.params.titleJob,
-        jobDescription: this.$route.params.jobDescription,
-        requirementsL: this.$route.params.requirementsL,
-        salary: this.$route.params.salary,
-        salaryUnit: this.$route.params.salaryUnit
+        titleJob: '',
+        jobDescription: '',
+        requirementsL: '',
+        salary: '',
+        salaryUnit: '',
+        recruitersId: ''
       },
       job:{
         userId:localStorage.getItem('userId'),
@@ -78,16 +80,23 @@ export default {
   },
   created() {
     this.getResume()
+    this.getJobDetail(this.$route.params.jobId)
   },
-  mounted() {},
+  mounted() {
+    this.getCurrentTime();
+  },
   updated() {},
   methods: {
+    getCurrentTime() {
+      const date = new Date();
+      this.currentTime = date.toLocaleString(); // 可以根据需要使用不同的Date对象方法来格式化时间
+    },
         async handleClick() {
           if(this.currentResume!=null){
             Snackbar.success('投递成功');
-            user.addSendResume(this.currentResume,this.job.userId,);
+            user.addSendResume(this.currentResume,this.job.userId,this.data.jobId,this.data.recruitersId,this.currentTime);
           }else{
-            Snackbar.success('请选择简历');
+            Snackbar.error('请选择简历');
           }
         },
         //将选择的当前简历的id赋值给currentResume，方便之后的的传送
@@ -103,7 +112,7 @@ export default {
 
         report(){
           Snackbar.success('举报成功');
-          user.addReport(this.job.userId,this.job.jobId);
+          user.addReport(this.job.userId,this.job.jobId,this.currentTime);
         },
         share(){
           console.log(this.data.jobId);
@@ -112,7 +121,12 @@ export default {
           const userId = localStorage.getItem('userId');
           const resume = await user.getResume(userId);
           this.items = resume;
-        }
+        },
+        //获取当前职位的相关信息
+        async getJobDetail(jobId) {
+            const items = await user.getJobDetail(jobId);
+            this.data = items[0];
+        },
     },
     components:{
       NavigationBarVue

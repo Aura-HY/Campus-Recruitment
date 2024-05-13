@@ -2,9 +2,14 @@
     <div class="head">
         <div class="headson">
             <Select @send-id="typeId1"></Select>
+            <div class="img">
+            <img src="../assets/2.jpg" alt="图" />
+        </div>
         </div>
         
     </div>
+    
+
     <div class="body">
         <jobCard :paramId="typeId"></jobCard>
     </div>
@@ -38,7 +43,7 @@ export default{
 
 <style scoped>
 .head{
-    height: 10%;
+    height: 40%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -50,7 +55,10 @@ export default{
 
 }
 .body{
-    height: 90%;
+    height: 60%;
     overflow: auto;
+}
+.img{
+    height: 80%;
 }
 </style>
