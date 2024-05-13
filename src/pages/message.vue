@@ -1,10 +1,9 @@
 <template>
    <div class = "head">
-    <messageBar :nickname="name1"></messageBar>
+    <messageBar></messageBar>
    </div>
     <div class="body">
-        
-        <messageCard @send-name="sendName"></messageCard>
+        <messageCard></messageCard>
     </div>
     
 </template>
@@ -16,15 +15,8 @@ export default{
     name:"message",
     data(){
         return{
-            name1:''
-        }
-    },
-    methods:{
-        sendName(nickname){
-            console.log(nickname);
-            this.name1 = nickname;
-        }
 
+        }
     },
     components: {
         messageCard,

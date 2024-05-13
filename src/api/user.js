@@ -1,12 +1,8 @@
 import request from '../utils/request';
 const moduleUrl = '/user';
+import fileRequest from '../utils/fileRequest';
 
 const user = {
-    // 查询某个用户的详细信息,这是模版
-    // getUserInfo(data) {
-    //     return request(`${moduleUrl}/getUserInfo`, data);
-    // }
-
     //首页渲染
     getJobList(){
         return request(`${moduleUrl}/home/getJobList`);
@@ -28,8 +24,8 @@ const user = {
         return request(`${moduleUrl}/addReport`,{ userId , jobId, reportTime });
     },
     //用户注册
-    addUser(userId,password,phoneNumber,nickname,identityParam){
-        return request(`${moduleUrl}/addUser`,{ userId, password, phoneNumber, nickname, identityParam })
+    addUser(userId,password,identityParam){
+        return request(`${moduleUrl}/addUser`,{ userId, password, identityParam, userAvatar })
     },
     //获取用户密码
     getUserPassword(userId){
@@ -45,7 +41,7 @@ const user = {
     },
     //上传头像
     uploadAvatar(userAvatar){
-        return request(`${moduleUrl}/uploadAvatar`,{ userAvatar });
+        return fileRequest(`${moduleUrl}/uploadAvatar`,userAvatar);
     },
     //获取职位详情
     getJobDetail(jobId){
@@ -55,11 +51,22 @@ const user = {
     getNotice(){
         return request(`${moduleUrl}/getNotice`);
     },
-
-
-
-
-
+    getMessageList(recruitersId){
+        return request(`${moduleUrl}/getMessageList`,{ recruitersId });
+    },
+    addMessage(content,jobSeekerId,recruitersId,messageTime){
+        return request(`${moduleUrl}/addMessage`,{ content, jobSeekerId, recruitersId, messageTime });
+    },
+    getMessageMan(userId){
+        return request(`${moduleUrl}/getMessageMan`,{ userId });
+    },
+    getUserName(userId){
+        return request(`${moduleUrl}/getUserPassword`,{ userId });
+    },
+    //撤回消息
+    deleteMessage(messageId){
+        return request(`${moduleUrl}/deleteMessage`,{ messageId });
+    },
 
 
 

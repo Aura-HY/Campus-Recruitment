@@ -11,8 +11,8 @@
 
             <div class="bottom" style="display: -webkit-flex; display: flex">
                 <div class="avatar"><img :src="item.userAvatar" /></div>
-                <div class="recruiters" style="margin-left: 10px">{{ item.userName }}</div>
-                <div class="location" style="position: absolute; right: 30px">{{ item.location }}</div>
+                <div class="recruiters" style="margin-left: 10px; ">{{ item.nickname }}</div>
+                <div class="location" style="position: absolute; right: 30px;">{{ item.location }}</div>
             </div>
         </div>
     </div>
@@ -39,6 +39,7 @@ export default {
     },
     methods: {
         goJobDetail(jobId) {
+            console.log(localStorage.getItem('token')); 
             this.$router.push({
                 name: 'jobDetail',
                 params: {
@@ -108,10 +109,11 @@ position: relative;
     padding-right: 5px;
     opacity: 1;
     border-radius: 2px;
-    background: rgba(235, 233, 233, 0.773);
+    background: rgba(219, 216, 216, 0.773);
     display: inline-block;
     padding-left: 0.5em;
     white-space: nowrap;
+    opacity: 0.6;
 }
 .bottom {
     margin-top: 14px;

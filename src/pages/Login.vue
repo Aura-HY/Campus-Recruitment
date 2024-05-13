@@ -8,7 +8,7 @@
                     <var-icon class="prepend-icon" name="account-circle-outline" />
                 </template>
                 </var-input>
-                <var-input style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="password" v-model="userLogin.password">
+                <var-input type="password" style="width:92%;margin-top: 20px;background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="password" v-model="userLogin.password">
                 <template #prepend-icon>
                     <var-icon class="prepend-icon" name="lock-outline" />
                 </template>
@@ -25,6 +25,7 @@
 <script>
 import { Snackbar } from '@varlet/ui'
 import user from '../api/user'
+import authentication from '../utils/authentication'
 export default {
     data(){
         return{
@@ -37,12 +38,16 @@ export default {
     },
     methods:{
         async gotoHome(){
-            const password1 = await user.getUserPassword(this.userLogin.userId);
-            if(this.userLogin.password === password1[0].password){
+            const userId = this.userLogin.userId;
+            const result = await authentication.login({ userId: userId, password:this.userLogin.password });
+            if(result === true ){
                 this.result = true;
                 Snackbar.success('登录成功');
                 localStorage.setItem('userId',this.userLogin.userId);
                 this.$router.push({name:'home'});
+                console.log(localStorage.getItem('token')); 
+            }else{
+                Snackbar.error('登录失败,请检查id和密码');
             }
             if(this.userLogin.userId === '' || this.userLogin.password === '' || this.result === false){
                 console.log(this.result);
