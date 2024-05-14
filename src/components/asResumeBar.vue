@@ -7,17 +7,20 @@
         </template>
 
         <template #right>
-            <var-button color="transparent" text-color="#fff" round text @click="revise">修改</var-button>
+            <var-button color="transparent" text-color="#fff" round text @click="revise(resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId)">修改</var-button>
         </template>
     </var-app-bar>
 </template>
 
 <script>
 import { Snackbar } from '@varlet/ui'
-
+import user from '../api/user'
 export default {
     name:'afterSelectResume',
     emits: ['revise'],
+    props:['resumeName', 'name', 'gender', 'grade', 'academy', 'classNumber',
+            'studentId', 'wechat', 'phone', 'healthCertificate', 'curriculumVitae',
+            'workExperience', 'honorCertificate', 'resumeId'],
     data() {
         return {};
     },
@@ -29,10 +32,11 @@ export default {
     },
     methods: {
         goSelectResume() {
-            router.push({ name: 'selectResume' });
+            
+            this.$router.push({ name: 'selectResume' });
         },
-        revise() {
-            this.$emit('revise');
+        async revise(resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId) {
+            await user.reviseResume( resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId);
             Snackbar.success('修改成功');
         }
     }

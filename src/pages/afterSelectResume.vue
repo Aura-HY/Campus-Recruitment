@@ -1,6 +1,9 @@
 <template>
     <div class="top">
-        <asResumeBar></asResumeBar>
+        <asResumeBar :resumeName="resumeName" :name="name" :gender="gender" :grade="grade" :academy="academy"
+            :classNumber="classNumber" :studentId="studentId" :wechat="wechat" :phone="phone"
+            :healthCertificate="healthCertificate" :curriculumVitae="curriculumVitae"
+            :workExperience="workExperience" :honorCertificate="honorCertificate" :resumeId="resumeId"></asResumeBar>
     </div>
 
     <!-- 大简历卡片 -->
@@ -74,7 +77,8 @@ export default {
             healthCertificate:'',
             curriculumVitae:'',
             workExperience:'',
-            honorCertificate:''
+            honorCertificate:'',
+            resumeId:this.$route.params.resumeId
         };
     },
     created() {
@@ -82,47 +86,6 @@ export default {
     },
     mounted() {},
     updated() {},
-    watch: {
-    resumeName(newValue) {
-        this.reviseResume('resumeName', newValue);
-    },
-    name(newValue) {
-        this.reviseResume('name', newValue);
-    },
-    gender(newValue) {
-        this.reviseResume('gender', newValue);
-    },
-    grade(newValue) {
-        this.reviseResume('grade', newValue);
-    },
-    academy(newValue) {
-        this.reviseResume('academy', newValue);
-    },
-    classNumber(newValue) {
-        this.reviseResume('classNumber', newValue);
-    },
-    studentId(newValue) {
-        this.reviseResume('studentId', newValue);
-    },
-    wechat(newValue) {
-        this.reviseResume('wechat', newValue);
-    },
-    phone(newValue) {
-        this.reviseResume('phone', newValue);
-    },
-    healthCertificate(newValue) {
-        this.reviseResume('healthCertificate', newValue);
-    },
-    curriculumVitae(newValue) {
-        this.reviseResume('curriculumVitae', newValue);
-    },
-    workExperience(newValue) {
-        this.reviseResume('workExperience', newValue);
-    },
-    honorCertificate(newValue) {
-        this.reviseResume('honorCertificate', newValue);
-    }
-},
     methods: {
         handleResumeClick(resumeId){
             this.getUserResumesInfo(resumeId);
@@ -144,9 +107,6 @@ export default {
             this.workExperience = userResumesInfo[0].workExperience;
             this.honorCertificate = userResumesInfo[0].honorCertificate;
         },
-        async reviseResume(resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId){
-            await user.reviseResume( resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId);
-        }
     }
 }
 </script>

@@ -25,7 +25,7 @@ const user = {
     },
     //用户注册
     addUser(userId,password,identityParam){
-        return request(`${moduleUrl}/addUser`,{ userId, password, identityParam, userAvatar })
+        return request(`${moduleUrl}/addUser`,{ userId, password, identityParam })
     },
     //获取用户密码
     getUserPassword(userId) {
@@ -66,7 +66,10 @@ const user = {
     deleteMessage(messageId){
         return request(`${moduleUrl}/deleteMessage`,{ messageId });
     },
-
+    //删除简历
+    deleteResume(resumeId){
+        return request(`${moduleUrl}/deleteResume`,{ resumeId });
+    },
 
 
 
@@ -125,8 +128,8 @@ const user = {
         return request(`${moduleUrl}/getUserFavoritesJob`, data);
     },
     //读取用户收藏的职位
-    reviseResume(data){
-        return request(`${moduleUrl}/reviseResume`, data);
+    reviseResume(resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId){
+        return request(`${moduleUrl}/reviseResume`, {resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId});
     }
 };
 
