@@ -5,7 +5,7 @@
     <!-- 大简历卡片 -->
     <div class="resumeCards">
         <!-- 小简历卡片 -->
-        <div v-for="item in userResumes" :key="item.resumeId" class="resumeCard">
+        <div v-for="(item,index) in userResumes" :key="index" class="resumeCard" @contextmenu.prevent="openMenu($event,index)">
             <!-- 左边的简历图标盒子 -->
             <div class="src-box">
                 <var-icon name="file-document-outline" :size="80" />
@@ -21,6 +21,13 @@
                 <var-icon name="chevron-right" :size="35" style="margin-left: 10px" />
             </div>
         </div>
+        <ul
+        v-show="quickMenuVisible"
+        :style="{ left: quickMenu_left + 'px', top: quickMenu_top + 'px' }"
+        class="contextmenu"
+        >
+        <li @click="rollBack">删除</li>
+        </ul>
     </div>
 </template>
 
@@ -29,10 +36,23 @@ import user from '../api/user';
 import sResumeBar from '../components/sResumeBar.vue';
 
 export default {
+    watch: {
+    quickMenuVisible(value) {
+        if (value) {
+            document.body.addEventListener("click", this.closeMenu);
+        } else {
+            document.body.removeEventListener("click", this.closeMenu);
+        }
+    },
+    },
     name:'resumes',
     data() {
         return {
-            userResumes: []
+            userResumes: [],
+            quickMenu_left: 0,
+            quickMenu_top: 0,
+            quickMenuVisible: false,
+            index:null
         };
     },
     created() {
@@ -50,7 +70,21 @@ export default {
         },
         goResume(resumeId) {
             this.$router.push({ name: 'afterSelectResume', params: { resumeId } });
-        }
+        },
+        openMenu(e,index) {
+            this.index = index
+            this.quickMenu_top = e.clientY;
+            this.quickMenu_left = e.clientX;
+            this.quickMenuVisible = true;
+            
+        },
+        async rollBack() {
+            await user.deleteResume(this.userResumes[this.index].resumeId);
+            this.userResumes.splice(this.index, 1);
+        },
+        closeMenu() {
+            this.quickMenuVisible = false;
+        },
     },
     components: {
         sResumeBar
@@ -94,5 +128,29 @@ export default {
 .arrow-box {
     color: black;
     cursor: pointer; /* 添加指针样式 */
+}
+/* 右键快捷菜单的样式 */
+.contextmenu {
+    margin: 0;
+    background: #fff;
+    z-index: 3000;
+    position: absolute;
+    list-style-type: none;
+    padding: 5px 0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.contextmenu li {
+    margin: 0;
+    padding: 7px 16px;
+    cursor: pointer;
+}
+
+.contextmenu li:hover {
+    background: #eee;
 }
 </style>

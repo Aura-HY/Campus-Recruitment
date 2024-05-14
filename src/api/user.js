@@ -66,7 +66,10 @@ const user = {
     deleteMessage(messageId){
         return request(`${moduleUrl}/deleteMessage`,{ messageId });
     },
-
+    //删除简历
+    deleteResume(resumeId){
+        return request(`${moduleUrl}/deleteResume`,{ resumeId });
+    },
 
 
 

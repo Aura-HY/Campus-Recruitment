@@ -142,7 +142,6 @@ export default {
       this.quickMenu_top = e.clientY;
       this.quickMenu_left = e.clientX;
       this.quickMenuVisible = true;
-      console.log(this.quickMenuVisible);
     },
     // 隐藏右键快捷菜单
     closeMenu() {
