@@ -7,24 +7,34 @@
         </template>
 
         <template #right>
-            <var-button color="transparent" text-color="#fff" round text @click="handleClick()">
-                修改
-            </var-button>
+            <var-button color="transparent" text-color="#fff" round text @click="revise">修改</var-button>
         </template>
     </var-app-bar>
 </template>
 
-<script setup>
-import { useRouter } from 'vue-router';
+<script>
 import { Snackbar } from '@varlet/ui'
 
-const router = useRouter();
-
-function goSelectResume() {
-    router.push({ name: 'selectResume' });
-}
-
-function handleClick() {
-    Snackbar.success('修改成功');
+export default {
+    name:'afterSelectResume',
+    emits: ['revise'],
+    data() {
+        return {};
+    },
+    computed: {},
+    created() {},
+    mounted() {
+    },
+    updated() {
+    },
+    methods: {
+        goSelectResume() {
+            router.push({ name: 'selectResume' });
+        },
+        revise() {
+            this.$emit('revise');
+            Snackbar.success('修改成功');
+        }
+    }
 }
 </script>

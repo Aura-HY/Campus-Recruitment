@@ -5,7 +5,7 @@
         <div class="avatar">
             <!--手机端得点击方可悬浮 但电脑端滑到上面即可-->
             <var-space align="center">
-                <var-avatar :src="user.userAvatar" size="78" fit="cover" bordered="true" hoverable="true" />
+                <var-avatar src="../../public/avatar.jpg" size="78" fit="cover" bordered="true" hoverable="true" />
             </var-space>
         </div>
 
