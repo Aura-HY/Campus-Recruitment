@@ -57,11 +57,6 @@ export default {
             }else{
                 Snackbar.error('登录失败,请检查id和密码');
             }
-            if(this.userLogin.userId === '' || this.userLogin.password === '' || this.result === false){
-                console.log(this.result);
-                Snackbar.error('登录失败,请检查id和密码');
-            }
-            
         },
         gotoRegister(){
             this.$router.push({

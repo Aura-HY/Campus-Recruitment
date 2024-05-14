@@ -106,22 +106,22 @@ export default {
         //统计用户收藏的简历份数总数
         async getUserFavoritesCollectionsSum(userId) {
             const resumeSum = await user.favoritesCollectionsSum({ userId });
-            this.resumeSum = resumeSum[0].count;
+            this.resumeSum = resumeSum;
         },
         //统计用户沟通过的聊天总数
         async getUserSessionSum(userId) {
             const sessionSum = await user.sessionSum({ userId });
-            this.sessionSum = sessionSum[0].count;
+            this.sessionSum = sessionSum;
         },
         //统计用户已投简历总数
         async getUserResumeTrueSum(userId) {
             const resumeTrueSum = await user.resumeTrueSum({ userId });
-            this.resumeTrueSum = resumeTrueSum[0].count;
+            this.resumeTrueSum = resumeTrueSum;
         },
         //统计用户待面试总数
         async getUserInterviewedSum(userId) {
             const interviewedSum = await user.interviewedSum({ userId });
-            this.interviewedSum = interviewedSum[0].count;
+            this.interviewedSum = interviewedSum;
         }
     }
 };

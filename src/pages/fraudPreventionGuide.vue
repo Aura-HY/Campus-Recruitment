@@ -15,24 +15,23 @@
 
         <!-- 骚话框 -->
         <div class="sh">
-            请帮蔡老师找一个女朋友
+            <var-image width="390.4px" height="200px" fit="cover" src="../assets/诈骗.jpg" />
         </div>
 
         <!-- 广告 今麦郎打钱！！！ -->
         <div class="ad">
-            <var-image width="390.4px" height="200px" fit="cover" src="../assets/3.jpg" />
+            <var-image width="390.4px" height="200px" fit="cover" src="../assets/ad.jpg" />
         </div>
     </div>
 </template>
 
 <script>
 import fpGuideBar from '../components/fpGuideBar.vue';
-export default{
-    components:{
+export default {
+    components: {
         fpGuideBar
     }
-}
-
+};
 </script>
 
 <style scoped>
@@ -41,13 +40,12 @@ export default{
     width: 100%;
 }
 
-.text1{
+.text1 {
     font-weight: bold;
-    
 }
 
 /* 设置防诈小指南盒子 */
-.text{
+.text {
     border: 1px solid #000;
     margin-bottom: 20px; /* 设置防诈小指南与骚话之间的间距 */
     opacity: 1;
@@ -56,19 +54,24 @@ export default{
     border: 1px solid rgba(229, 229, 229, 1);
     margin: 15px;
 }
-/* 设置骚话盒子 */
-.sh{
-    margin-bottom: 20px; /* 设置骚话盒子与广告盒子之间的间距 */
-    height: 150px;
 
+/* 设置骚话和广告盒子 */
+.sh,.ad {
+    margin-bottom: 20px;
     opacity: 1;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(229, 229, 229, 1);
     margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 隐藏溢出的部分 */
 }
 
-/* 设置广告盒子 */
-.ad{
-    height: 200px;
+/* 设置骚话和广告盒子中的图片样式 */
+.image {
+    width: 100%; /* 图片宽度填满父容器 */
+    height: 100%; /* 图片高度填满父容器 */
+    object-fit: cover; /* 图片填充整个容器，可能会裁剪部分图片 */
 }
 </style>

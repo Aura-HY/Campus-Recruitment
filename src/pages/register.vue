@@ -26,7 +26,7 @@
                 </var-select>
         </div>
         <div class="verificationCode">
-            <var-button style="width:95%;" @click="gotoCompareCaptcha" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Get A Verification Code</var-button>
+            <var-button style="width:95%;" @click="gotoLogin" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">gotoLogin</var-button>
         </div>
 </template>
 

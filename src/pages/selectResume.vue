@@ -60,12 +60,14 @@ export default {
 
 <style scoped>
 .top {
-    margin-bottom: 20px;
-    margin-top: 76px;
+    height: 10%;
+    width: 100%;
 }
 
 .resumeCards {
     margin-bottom: 20px;
+    overflow-y: auto;
+    height: 90%;
 }
 
 .resumeCard {
