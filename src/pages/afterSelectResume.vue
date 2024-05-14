@@ -55,11 +55,11 @@
 import asResumeBar from '../components/asResumeBar.vue';
 import user from '../api/user';
 
+
 export default {
     components: {
         asResumeBar
     },
-    name: 'intoResume',
     data() {
         return {
             resumeName:'',
@@ -82,20 +82,73 @@ export default {
     },
     mounted() {},
     updated() {},
+    watch: {
+    resumeName(newValue) {
+        this.reviseResume('resumeName', newValue);
+    },
+    name(newValue) {
+        this.reviseResume('name', newValue);
+    },
+    gender(newValue) {
+        this.reviseResume('gender', newValue);
+    },
+    grade(newValue) {
+        this.reviseResume('grade', newValue);
+    },
+    academy(newValue) {
+        this.reviseResume('academy', newValue);
+    },
+    classNumber(newValue) {
+        this.reviseResume('classNumber', newValue);
+    },
+    studentId(newValue) {
+        this.reviseResume('studentId', newValue);
+    },
+    wechat(newValue) {
+        this.reviseResume('wechat', newValue);
+    },
+    phone(newValue) {
+        this.reviseResume('phone', newValue);
+    },
+    healthCertificate(newValue) {
+        this.reviseResume('healthCertificate', newValue);
+    },
+    curriculumVitae(newValue) {
+        this.reviseResume('curriculumVitae', newValue);
+    },
+    workExperience(newValue) {
+        this.reviseResume('workExperience', newValue);
+    },
+    honorCertificate(newValue) {
+        this.reviseResume('honorCertificate', newValue);
+    }
+},
     methods: {
         handleResumeClick(resumeId){
             this.getUserResumesInfo(resumeId);
         },
         async getUserResumesInfo(resumeId) {
-            console.log(resumeId);
             const userResumesInfo = await user.getUserResumesInfo(resumeId);
-            console.log(userResumesInfo);
-            this.userResumesInfo = Object.keys(userResumesInfo[0]).map(key => ({ [key]: userResumesInfo[0][key] }));
+            //this.userResumesInfo = Object.keys(userResumesInfo[0]).map(key => ({ [key]: userResumesInfo[0][key] }));
+            this.resumeName = userResumesInfo[0].resumeName;
+            this.name = userResumesInfo[0].name;
+            this.gender = userResumesInfo[0].gender;
+            this.grade = userResumesInfo[0].grade;
+            this.academy = userResumesInfo[0].academy;
+            this.classNumber = userResumesInfo[0].classNumber;
+            this.studentId = userResumesInfo[0].studentId;
+            this.wechat = userResumesInfo[0].wechat;
+            this.phone = userResumesInfo[0].phone;
+            this.healthCertificate = userResumesInfo[0].healthCertificate;
+            this.curriculumVitae = userResumesInfo[0].curriculumVitae;
+            this.workExperience = userResumesInfo[0].workExperience;
+            this.honorCertificate = userResumesInfo[0].honorCertificate;
+        },
+        async reviseResume(resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId){
+            await user.reviseResume( resumeName, name, gender, grade, academy, classNumber, studentId, wechat, phone, healthCertificate, curriculumVitae, workExperience, honorCertificate, resumeId);
         }
-        
-        
     }
-};
+}
 </script>
 
 <style scoped>

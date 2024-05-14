@@ -126,6 +126,10 @@ const user = {
     //读取用户收藏的职位
     getUserFavoritesJob(data){
         return request(`${moduleUrl}/getUserFavoritesJob`, data);
+    },
+    //读取用户收藏的职位
+    reviseResume(data){
+        return request(`${moduleUrl}/reviseResume`, data);
     }
 };
 
