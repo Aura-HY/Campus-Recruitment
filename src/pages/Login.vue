@@ -15,8 +15,8 @@
                 </var-input>
         </div>
         <div class="login">
-            <var-button @click="gotoHome" style="width:94%;" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Login</var-button>
-            <var-button @click="gotoRegister" style="width:94%;margin-top: 20px;" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Register</var-button>
+            <var-button @click="gotoHome" style="width:94%;" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">登录</var-button>
+            <var-button @click="gotoRegister" style="width:94%;margin-top: 20px;" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">注册</var-button>
         </div>
         </div>
     </div>

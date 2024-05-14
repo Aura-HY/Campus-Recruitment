@@ -7,9 +7,9 @@
         </template>
     </var-app-bar>
             <h1 style="margin-top: 30%;margin-left: 5%;">Register To Your Account</h1>
-            <div class="avatar">
+            <!-- <div class="avatar">
                 <var-uploader v-model="img" resolve-type="file" @after-read="handleAfterRead(img)" :maxlength="1"/>
-            </div>
+            </div> -->
             <div class="id">
                 <var-input style="width:92%; background-color:rgba(2, 0, 0, 0.03);" variant="outlined" placeholder="id" v-model="userRegister.userId">
                 <template #prepend-icon>
@@ -25,8 +25,11 @@
                         <var-option v-for="identity in userIdentity" :key="identity.identityParam" :label=identity.identity @click="identityFunction(identity.identityParam)"/>
                 </var-select>
         </div>
-        <div class="verificationCode">
+        <!-- <div class="verificationCode">
             <var-button style="width:95%;" @click="gotoCompareCaptcha" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">Get A Verification Code</var-button>
+        </div> -->
+        <div class="verificationCode">
+            <var-button style="width:95%;" @click="gotoLogin" color="linear-gradient(to right bottom, #2980E3, #D0BCFF)" block type="primary">注册</var-button>
         </div>
 </template>
 
@@ -66,12 +69,12 @@ export default {
                 Snackbar.error('注册失败');
             }else{
                 //注册的同时把图片上传至图床
-                const file = new FormData();
-                file.append('file',this.userRegister.userAvatar.file)
-                await user.uploadAvatar(file);
-                this.userRegister.userAvatar = target_path;
+                // const file = new FormData();
+                // file.append('file',this.userRegister.userAvatar.file)
+                // await user.uploadAvatar(file);
+                // this.userRegister.userAvatar = target_path;
                 Snackbar.success('注册成功');
-                await user.addUser(this.userRegister.userId,this.userRegister.password,this.userRegister.identity,this.userRegister.userAvatar);
+                await user.addUser(this.userRegister.userId,this.userRegister.password,this.userRegister.identity);
                 this.$router.push({name:'Login'})
             }
         },
@@ -95,7 +98,7 @@ export default {
     margin-top: 7%;
 }
 .id{
-    margin-top: 5%;
+    margin-top: 25%;
     margin-left:5%;
 }
 .verificationCode{

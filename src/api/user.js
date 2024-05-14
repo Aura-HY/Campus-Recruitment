@@ -25,7 +25,7 @@ const user = {
     },
     //用户注册
     addUser(userId,password,identityParam){
-        return request(`${moduleUrl}/addUser`,{ userId, password, identityParam, userAvatar })
+        return request(`${moduleUrl}/addUser`,{ userId, password, identityParam })
     },
     //获取用户密码
     getUserPassword(userId) {
