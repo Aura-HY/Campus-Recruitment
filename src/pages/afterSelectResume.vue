@@ -7,43 +7,46 @@
     <div class="resumeCards">
             <!-- 输入个人信息框盒子 -->
                 <div class="personal-info">
-                    <var-input placeholder="简历名称" v-model="resumeName" />
+                    <var-input placeholder="简历名称" v-model="resumeName" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="姓名" v-model="name" />
+                    <var-input placeholder="姓名" v-model="name" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="性别" v-model="gender" />
+                    <var-input placeholder="性别" v-model="gender" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="年级" v-model="grade" />
+                    <var-input placeholder="年级" v-model="grade" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="学院" v-model="academy" />
+                    <var-input placeholder="学院" v-model="academy" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="班级" v-model="classNumber" />
+                    <var-input placeholder="班级" v-model="classNumber" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="学号" v-model="studentId" />
+                    <var-input placeholder="学号" v-model="studentId" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="微信号" v-model="wechat" />
+                    <var-input placeholder="微信号" v-model="wechat" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="练习电话" v-model="phone" />
+                    <var-input placeholder="练习电话" v-model="phone" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="是否拥有健康证" v-model="healthCertificate" />
+                    <var-select placeholder="是否拥有健康证明" v-model="healthCertificate" >
+                        <var-option label="是" :value="1" />
+                        <var-option label="否" :value="0" />
+                    </var-select>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="个人简历" v-model="curriculumVitae" />
+                    <var-input placeholder="个人简历" v-model="curriculumVitae" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="工作经历" v-model="workExperience" />
+                    <var-input placeholder="工作经历" v-model="workExperience" class="aput"/>
                 </div>
                 <div class="personal-info">
-                    <var-input placeholder="荣誉证书" v-model="honorCertificate" />
+                    <var-input placeholder="荣誉证书" v-model="honorCertificate" class="aput"/>
                 </div>
             </div>
 </template>
@@ -108,7 +111,6 @@ export default {
 
 /* 设置个人信息盒子 */
 .personal-info {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
@@ -119,6 +121,10 @@ export default {
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(229, 229, 229, 1);
     margin: 15px;
+}
+
+.aput {
+    width: 100%;
 }
 
 </style>
